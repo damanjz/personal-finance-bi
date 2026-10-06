@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+data/finance.duckdb
+*.pbix.bak
+dist/
+.captures/

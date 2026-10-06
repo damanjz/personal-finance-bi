@@ -1,0 +1,31 @@
+priority,source,pattern,category
+10,bank,CC BILL PAYMENT,Card bill payment
+11,card,^PAYMENT RECEIVED,Card bill payment
+20,bank,/SALARY ,Salary
+21,bank,/PERF BONUS,Bonus
+22,bank,OFFICE REIT/DISTRIBUTION,Investment income
+23,card,^CASHBACK,Cashback
+24,bank,^FD CLOSURE,Fixed deposit
+30,bank,/Rent$,Rent
+31,bank,TO FATHER,Family support
+32,bank,/maid salary,Household help
+33,bank,ELECTRICITY|FIBERNET|AIRTEL,Utilities
+34,card,NETFLIX|SPOTIFY|YOUTUBE PREMIUM|CULTFIT,Subscriptions
+35,any,STAR HEALTH|HDFC LIFE|ICICI LOMBARD,Insurance
+36,bank,LOAN EMI/,Loan EMIs
+40,any,ZEPTO|BLINKIT|BIGBASKET|DMART,Groceries
+41,any,SWIGGY|ZOMATO|PARADISE BIRYANI|CAFE NILOUFER|TRUFFLES,Dining and delivery
+42,any,UBER|RAPIDO|OLA CABS|METRO RAIL|FUEL|MOTORS SERVICE,Transport
+43,any,AMAZON|MYNTRA|FLIPKART|DECATHLON|IKEA,Shopping
+44,any,PVR INOX|BOOKMYSHOW,Entertainment
+45,any,APOLLO PHARMACY|PRACTO,Health
+46,any,MAKEMYTRIP|TRAVEL,Travel
+47,any,DIWALI GIFTS,Gifts and festivals
+48,bank,^ATM WDL,Cash withdrawal
+49,any,COURSERA,Education
+50,bank,CAR DOWN PAYMENT,Vehicle purchase
+60,bank,NIFTY 50 INDEX FUND,Equity fund
+61,bank,SHORT TERM DEBT FUND,Debt fund
+62,bank,TO PPF,PPF
+63,bank,^FD BOOKED,Fixed deposit
+64,bank,ZERODHA BROKING,REIT

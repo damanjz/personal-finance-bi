@@ -1,0 +1,29 @@
+category,category_group,sort_order
+Salary,Income,1
+Bonus,Income,2
+Investment income,Income,3
+Cashback,Income,4
+Rent,Fixed,10
+Family support,Fixed,11
+Loan EMIs,Fixed,12
+Insurance,Fixed,13
+Utilities,Fixed,14
+Household help,Fixed,15
+Subscriptions,Fixed,16
+Groceries,Discretionary,20
+Dining and delivery,Discretionary,21
+Shopping,Discretionary,22
+Travel,Discretionary,23
+Transport,Discretionary,24
+Gifts and festivals,Discretionary,25
+Entertainment,Discretionary,26
+Cash withdrawal,Discretionary,27
+Health,Discretionary,28
+Education,Discretionary,29
+Vehicle purchase,Discretionary,30
+Equity fund,Investments,40
+Debt fund,Investments,41
+PPF,Investments,42
+Fixed deposit,Investments,43
+REIT,Investments,44
+Card bill payment,Transfer,90
