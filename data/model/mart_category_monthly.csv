@@ -1,0 +1,816 @@
+month,category,category_group,spend,txn_count
+2021-10-01,Cash withdrawal,Discretionary,2500.00,1
+2021-10-01,Dining and delivery,Discretionary,4243.00,10
+2021-10-01,Entertainment,Discretionary,1864.00,2
+2021-10-01,Family support,Fixed,6000.00,1
+2021-10-01,Gifts and festivals,Discretionary,10326.00,1
+2021-10-01,Groceries,Discretionary,8350.00,7
+2021-10-01,Health,Discretionary,2957.00,2
+2021-10-01,Household help,Fixed,3000.00,1
+2021-10-01,Loan EMIs,Fixed,12896.00,1
+2021-10-01,Rent,Fixed,15000.00,1
+2021-10-01,Shopping,Discretionary,11215.00,5
+2021-10-01,Subscriptions,Fixed,3097.00,4
+2021-10-01,Transport,Discretionary,2342.00,7
+2021-10-01,Utilities,Fixed,3045.00,3
+2021-11-01,Cash withdrawal,Discretionary,3000.00,1
+2021-11-01,Dining and delivery,Discretionary,4565.00,8
+2021-11-01,Entertainment,Discretionary,1703.00,2
+2021-11-01,Family support,Fixed,6000.00,1
+2021-11-01,Gifts and festivals,Discretionary,10618.00,1
+2021-11-01,Groceries,Discretionary,8164.00,6
+2021-11-01,Health,Discretionary,582.00,1
+2021-11-01,Household help,Fixed,3000.00,1
+2021-11-01,Loan EMIs,Fixed,12896.00,1
+2021-11-01,Rent,Fixed,15000.00,1
+2021-11-01,Shopping,Discretionary,10656.00,2
+2021-11-01,Subscriptions,Fixed,3107.00,4
+2021-11-01,Transport,Discretionary,2502.00,6
+2021-11-01,Utilities,Fixed,3065.00,3
+2021-12-01,Cash withdrawal,Discretionary,3000.00,1
+2021-12-01,Dining and delivery,Discretionary,7069.00,7
+2021-12-01,Entertainment,Discretionary,1838.00,2
+2021-12-01,Family support,Fixed,6100.00,1
+2021-12-01,Groceries,Discretionary,8109.00,6
+2021-12-01,Health,Discretionary,641.00,1
+2021-12-01,Household help,Fixed,3000.00,1
+2021-12-01,Loan EMIs,Fixed,12896.00,1
+2021-12-01,Rent,Fixed,15000.00,1
+2021-12-01,Shopping,Discretionary,4989.00,3
+2021-12-01,Subscriptions,Fixed,3117.00,4
+2021-12-01,Transport,Discretionary,2679.00,6
+2021-12-01,Travel,Discretionary,38000.00,3
+2021-12-01,Utilities,Fixed,3033.00,3
+2022-01-01,Cash withdrawal,Discretionary,3000.00,1
+2022-01-01,Dining and delivery,Discretionary,5648.00,11
+2022-01-01,Entertainment,Discretionary,504.00,1
+2022-01-01,Family support,Fixed,6100.00,1
+2022-01-01,Groceries,Discretionary,8750.00,6
+2022-01-01,Health,Discretionary,708.00,1
+2022-01-01,Household help,Fixed,3000.00,1
+2022-01-01,Insurance,Fixed,14500.00,1
+2022-01-01,Loan EMIs,Fixed,12896.00,1
+2022-01-01,Rent,Fixed,15000.00,1
+2022-01-01,Shopping,Discretionary,1927.00,3
+2022-01-01,Subscriptions,Fixed,3127.00,4
+2022-01-01,Transport,Discretionary,2921.00,6
+2022-01-01,Utilities,Fixed,2786.00,3
+2022-02-01,Cash withdrawal,Discretionary,2500.00,1
+2022-02-01,Dining and delivery,Discretionary,5244.00,9
+2022-02-01,Entertainment,Discretionary,532.00,1
+2022-02-01,Family support,Fixed,6100.00,1
+2022-02-01,Groceries,Discretionary,6573.00,5
+2022-02-01,Health,Discretionary,382.00,1
+2022-02-01,Household help,Fixed,3100.00,1
+2022-02-01,Loan EMIs,Fixed,12896.00,1
+2022-02-01,Rent,Fixed,15000.00,1
+2022-02-01,Shopping,Discretionary,4847.00,3
+2022-02-01,Subscriptions,Fixed,3137.00,4
+2022-02-01,Transport,Discretionary,2767.00,7
+2022-02-01,Utilities,Fixed,2711.00,3
+2022-03-01,Cash withdrawal,Discretionary,3000.00,1
+2022-03-01,Dining and delivery,Discretionary,6715.00,10
+2022-03-01,Entertainment,Discretionary,603.00,1
+2022-03-01,Family support,Fixed,6100.00,1
+2022-03-01,Groceries,Discretionary,8527.00,7
+2022-03-01,Health,Discretionary,3048.00,2
+2022-03-01,Household help,Fixed,3100.00,1
+2022-03-01,Loan EMIs,Fixed,12896.00,1
+2022-03-01,Rent,Fixed,15000.00,1
+2022-03-01,Shopping,Discretionary,3581.00,5
+2022-03-01,Subscriptions,Fixed,3147.00,4
+2022-03-01,Transport,Discretionary,2281.00,7
+2022-03-01,Utilities,Fixed,2696.00,3
+2022-04-01,Cash withdrawal,Discretionary,3000.00,1
+2022-04-01,Dining and delivery,Discretionary,5658.00,8
+2022-04-01,Entertainment,Discretionary,703.00,1
+2022-04-01,Family support,Fixed,6200.00,1
+2022-04-01,Groceries,Discretionary,8735.00,5
+2022-04-01,Health,Discretionary,863.00,1
+2022-04-01,Household help,Fixed,3100.00,1
+2022-04-01,Loan EMIs,Fixed,12896.00,1
+2022-04-01,Rent,Fixed,15000.00,1
+2022-04-01,Shopping,Discretionary,4338.00,5
+2022-04-01,Subscriptions,Fixed,3167.00,4
+2022-04-01,Transport,Discretionary,2178.00,6
+2022-04-01,Utilities,Fixed,4070.00,3
+2022-05-01,Cash withdrawal,Discretionary,3000.00,1
+2022-05-01,Dining and delivery,Discretionary,7055.00,6
+2022-05-01,Entertainment,Discretionary,714.00,1
+2022-05-01,Family support,Fixed,6200.00,1
+2022-05-01,Groceries,Discretionary,6890.00,6
+2022-05-01,Health,Discretionary,646.00,1
+2022-05-01,Household help,Fixed,3100.00,1
+2022-05-01,Loan EMIs,Fixed,12896.00,1
+2022-05-01,Rent,Fixed,15000.00,1
+2022-05-01,Shopping,Discretionary,4645.00,3
+2022-05-01,Subscriptions,Fixed,3177.00,4
+2022-05-01,Transport,Discretionary,3116.00,7
+2022-05-01,Travel,Discretionary,45000.00,3
+2022-05-01,Utilities,Fixed,4201.00,3
+2022-06-01,Cash withdrawal,Discretionary,2500.00,1
+2022-06-01,Dining and delivery,Discretionary,7084.00,12
+2022-06-01,Entertainment,Discretionary,1376.00,1
+2022-06-01,Family support,Fixed,6200.00,1
+2022-06-01,Groceries,Discretionary,8874.00,7
+2022-06-01,Health,Discretionary,509.00,1
+2022-06-01,Household help,Fixed,3100.00,1
+2022-06-01,Insurance,Fixed,11800.00,1
+2022-06-01,Loan EMIs,Fixed,12896.00,1
+2022-06-01,Rent,Fixed,15000.00,1
+2022-06-01,Shopping,Discretionary,3816.00,4
+2022-06-01,Subscriptions,Fixed,3187.00,4
+2022-06-01,Transport,Discretionary,2179.00,6
+2022-06-01,Utilities,Fixed,4172.00,3
+2022-07-01,Cash withdrawal,Discretionary,2500.00,1
+2022-07-01,Dining and delivery,Discretionary,4684.00,12
+2022-07-01,Entertainment,Discretionary,2371.00,2
+2022-07-01,Family support,Fixed,6300.00,1
+2022-07-01,Groceries,Discretionary,8998.00,5
+2022-07-01,Health,Discretionary,414.00,1
+2022-07-01,Household help,Fixed,3100.00,1
+2022-07-01,Loan EMIs,Fixed,12896.00,1
+2022-07-01,Rent,Fixed,15000.00,1
+2022-07-01,Shopping,Discretionary,4672.00,5
+2022-07-01,Subscriptions,Fixed,3197.00,4
+2022-07-01,Transport,Discretionary,2488.00,6
+2022-07-01,Utilities,Fixed,3137.00,3
+2022-08-01,Cash withdrawal,Discretionary,3000.00,1
+2022-08-01,Dining and delivery,Discretionary,5144.00,12
+2022-08-01,Entertainment,Discretionary,1373.00,2
+2022-08-01,Family support,Fixed,6300.00,1
+2022-08-01,Groceries,Discretionary,8852.00,4
+2022-08-01,Health,Discretionary,592.00,1
+2022-08-01,Household help,Fixed,3100.00,1
+2022-08-01,Loan EMIs,Fixed,12896.00,1
+2022-08-01,Rent,Fixed,15000.00,1
+2022-08-01,Shopping,Discretionary,6419.00,5
+2022-08-01,Subscriptions,Fixed,3207.00,4
+2022-08-01,Transport,Discretionary,2442.00,3
+2022-08-01,Utilities,Fixed,2738.00,3
+2022-09-01,Cash withdrawal,Discretionary,2000.00,1
+2022-09-01,Dining and delivery,Discretionary,6451.00,8
+2022-09-01,Entertainment,Discretionary,1298.00,1
+2022-09-01,Family support,Fixed,6300.00,1
+2022-09-01,Groceries,Discretionary,8865.00,7
+2022-09-01,Health,Discretionary,2946.00,2
+2022-09-01,Household help,Fixed,3200.00,1
+2022-09-01,Loan EMIs,Fixed,12896.00,1
+2022-09-01,Rent,Fixed,15000.00,1
+2022-09-01,Shopping,Discretionary,6566.00,2
+2022-09-01,Subscriptions,Fixed,3217.00,4
+2022-09-01,Transport,Discretionary,2574.00,6
+2022-09-01,Utilities,Fixed,2867.00,3
+2022-10-01,Cash withdrawal,Discretionary,2000.00,1
+2022-10-01,Dining and delivery,Discretionary,5125.00,7
+2022-10-01,Entertainment,Discretionary,2220.00,2
+2022-10-01,Family support,Fixed,6400.00,1
+2022-10-01,Gifts and festivals,Discretionary,12362.00,1
+2022-10-01,Groceries,Discretionary,8524.00,7
+2022-10-01,Health,Discretionary,411.00,1
+2022-10-01,Household help,Fixed,3200.00,1
+2022-10-01,Loan EMIs,Fixed,12896.00,1
+2022-10-01,Rent,Fixed,15800.00,1
+2022-10-01,Shopping,Discretionary,9999.00,3
+2022-10-01,Subscriptions,Fixed,3227.00,4
+2022-10-01,Transport,Discretionary,2765.00,5
+2022-10-01,Utilities,Fixed,3126.00,3
+2022-11-01,Cash withdrawal,Discretionary,2500.00,1
+2022-11-01,Dining and delivery,Discretionary,7485.00,7
+2022-11-01,Entertainment,Discretionary,846.00,1
+2022-11-01,Family support,Fixed,6400.00,1
+2022-11-01,Gifts and festivals,Discretionary,8099.00,1
+2022-11-01,Groceries,Discretionary,7895.00,5
+2022-11-01,Health,Discretionary,2468.00,2
+2022-11-01,Household help,Fixed,3200.00,1
+2022-11-01,Loan EMIs,Fixed,12896.00,1
+2022-11-01,Rent,Fixed,15800.00,1
+2022-11-01,Shopping,Discretionary,14641.00,2
+2022-11-01,Subscriptions,Fixed,3237.00,4
+2022-11-01,Transport,Discretionary,3240.00,7
+2022-11-01,Utilities,Fixed,2766.00,3
+2022-12-01,Cash withdrawal,Discretionary,3000.00,1
+2022-12-01,Dining and delivery,Discretionary,7465.00,7
+2022-12-01,Entertainment,Discretionary,657.00,1
+2022-12-01,Family support,Fixed,6400.00,1
+2022-12-01,Groceries,Discretionary,8807.00,7
+2022-12-01,Health,Discretionary,542.00,1
+2022-12-01,Household help,Fixed,3200.00,1
+2022-12-01,Loan EMIs,Fixed,12896.00,1
+2022-12-01,Rent,Fixed,15800.00,1
+2022-12-01,Shopping,Discretionary,4483.00,6
+2022-12-01,Subscriptions,Fixed,3247.00,4
+2022-12-01,Transport,Discretionary,2595.00,5
+2022-12-01,Travel,Discretionary,30000.00,3
+2022-12-01,Utilities,Fixed,2830.00,3
+2023-01-01,Cash withdrawal,Discretionary,2500.00,1
+2023-01-01,Dining and delivery,Discretionary,5092.00,11
+2023-01-01,Entertainment,Discretionary,1671.00,2
+2023-01-01,Family support,Fixed,6500.00,1
+2023-01-01,Groceries,Discretionary,9146.00,4
+2023-01-01,Health,Discretionary,1503.00,2
+2023-01-01,Household help,Fixed,3200.00,1
+2023-01-01,Insurance,Fixed,15660.00,1
+2023-01-01,Loan EMIs,Fixed,12896.00,1
+2023-01-01,Rent,Fixed,15800.00,1
+2023-01-01,Shopping,Discretionary,2871.00,4
+2023-01-01,Subscriptions,Fixed,3267.00,4
+2023-01-01,Transport,Discretionary,3175.00,6
+2023-01-01,Utilities,Fixed,3080.00,3
+2023-02-01,Cash withdrawal,Discretionary,2500.00,1
+2023-02-01,Dining and delivery,Discretionary,7403.00,11
+2023-02-01,Entertainment,Discretionary,853.00,1
+2023-02-01,Family support,Fixed,6500.00,1
+2023-02-01,Groceries,Discretionary,8904.00,7
+2023-02-01,Health,Discretionary,846.00,1
+2023-02-01,Household help,Fixed,3200.00,1
+2023-02-01,Loan EMIs,Fixed,12896.00,1
+2023-02-01,Rent,Fixed,15800.00,1
+2023-02-01,Shopping,Discretionary,2718.00,5
+2023-02-01,Subscriptions,Fixed,3277.00,4
+2023-02-01,Transport,Discretionary,3333.00,3
+2023-02-01,Utilities,Fixed,3197.00,3
+2023-03-01,Cash withdrawal,Discretionary,3000.00,1
+2023-03-01,Dining and delivery,Discretionary,7469.00,10
+2023-03-01,Entertainment,Discretionary,1893.00,2
+2023-03-01,Family support,Fixed,6500.00,1
+2023-03-01,Groceries,Discretionary,8487.00,6
+2023-03-01,Health,Discretionary,420.00,1
+2023-03-01,Household help,Fixed,3300.00,1
+2023-03-01,Insurance,Fixed,21500.00,1
+2023-03-01,Loan EMIs,Fixed,12896.00,1
+2023-03-01,Rent,Fixed,15800.00,1
+2023-03-01,Shopping,Discretionary,3621.00,5
+2023-03-01,Subscriptions,Fixed,3287.00,4
+2023-03-01,Transport,Discretionary,5281.00,8
+2023-03-01,Utilities,Fixed,2932.00,3
+2023-03-01,Vehicle purchase,Discretionary,150000.00,1
+2023-04-01,Cash withdrawal,Discretionary,3000.00,1
+2023-04-01,Dining and delivery,Discretionary,6477.00,12
+2023-04-01,Entertainment,Discretionary,696.00,1
+2023-04-01,Family support,Fixed,6500.00,1
+2023-04-01,Groceries,Discretionary,7860.00,6
+2023-04-01,Health,Discretionary,2236.00,2
+2023-04-01,Household help,Fixed,3300.00,1
+2023-04-01,Loan EMIs,Fixed,26389.00,2
+2023-04-01,Rent,Fixed,15800.00,1
+2023-04-01,Shopping,Discretionary,5611.00,5
+2023-04-01,Subscriptions,Fixed,3297.00,4
+2023-04-01,Transport,Discretionary,4764.00,9
+2023-04-01,Utilities,Fixed,4997.00,3
+2023-05-01,Cash withdrawal,Discretionary,3000.00,1
+2023-05-01,Dining and delivery,Discretionary,7434.00,10
+2023-05-01,Entertainment,Discretionary,1494.00,1
+2023-05-01,Family support,Fixed,6600.00,1
+2023-05-01,Groceries,Discretionary,7953.00,4
+2023-05-01,Health,Discretionary,557.00,1
+2023-05-01,Household help,Fixed,3300.00,1
+2023-05-01,Loan EMIs,Fixed,26389.00,2
+2023-05-01,Rent,Fixed,15800.00,1
+2023-05-01,Shopping,Discretionary,6127.00,4
+2023-05-01,Subscriptions,Fixed,3307.00,4
+2023-05-01,Transport,Discretionary,5808.00,8
+2023-05-01,Utilities,Fixed,4888.00,3
+2023-06-01,Cash withdrawal,Discretionary,3000.00,1
+2023-06-01,Dining and delivery,Discretionary,6334.00,11
+2023-06-01,Entertainment,Discretionary,1974.00,2
+2023-06-01,Family support,Fixed,6600.00,1
+2023-06-01,Groceries,Discretionary,7243.00,4
+2023-06-01,Health,Discretionary,785.00,1
+2023-06-01,Household help,Fixed,3300.00,1
+2023-06-01,Insurance,Fixed,11800.00,1
+2023-06-01,Loan EMIs,Fixed,26389.00,2
+2023-06-01,Rent,Fixed,15800.00,1
+2023-06-01,Shopping,Discretionary,4001.00,3
+2023-06-01,Subscriptions,Fixed,3317.00,4
+2023-06-01,Transport,Discretionary,14805.00,8
+2023-06-01,Utilities,Fixed,4529.00,3
+2023-07-01,Cash withdrawal,Discretionary,3000.00,1
+2023-07-01,Dining and delivery,Discretionary,5695.00,7
+2023-07-01,Entertainment,Discretionary,1823.00,2
+2023-07-01,Family support,Fixed,6600.00,1
+2023-07-01,Groceries,Discretionary,7239.00,6
+2023-07-01,Health,Discretionary,481.00,1
+2023-07-01,Household help,Fixed,3300.00,1
+2023-07-01,Loan EMIs,Fixed,26389.00,2
+2023-07-01,Rent,Fixed,15800.00,1
+2023-07-01,Shopping,Discretionary,3624.00,3
+2023-07-01,Subscriptions,Fixed,3337.00,4
+2023-07-01,Transport,Discretionary,6042.00,8
+2023-07-01,Utilities,Fixed,3144.00,3
+2023-08-01,Cash withdrawal,Discretionary,2000.00,1
+2023-08-01,Dining and delivery,Discretionary,5585.00,12
+2023-08-01,Entertainment,Discretionary,684.00,1
+2023-08-01,Family support,Fixed,6700.00,1
+2023-08-01,Groceries,Discretionary,7767.00,7
+2023-08-01,Health,Discretionary,841.00,1
+2023-08-01,Household help,Fixed,3300.00,1
+2023-08-01,Loan EMIs,Fixed,26389.00,2
+2023-08-01,Rent,Fixed,15800.00,1
+2023-08-01,Shopping,Discretionary,3718.00,3
+2023-08-01,Subscriptions,Fixed,3347.00,4
+2023-08-01,Transport,Discretionary,5504.00,5
+2023-08-01,Utilities,Fixed,3002.00,3
+2023-09-01,Cash withdrawal,Discretionary,2500.00,1
+2023-09-01,Dining and delivery,Discretionary,5364.00,9
+2023-09-01,Entertainment,Discretionary,1562.00,1
+2023-09-01,Family support,Fixed,6700.00,1
+2023-09-01,Groceries,Discretionary,9434.00,7
+2023-09-01,Health,Discretionary,711.00,1
+2023-09-01,Household help,Fixed,3400.00,1
+2023-09-01,Loan EMIs,Fixed,26389.00,2
+2023-09-01,Rent,Fixed,15800.00,1
+2023-09-01,Shopping,Discretionary,4733.00,6
+2023-09-01,Subscriptions,Fixed,3357.00,4
+2023-09-01,Transport,Discretionary,5364.00,9
+2023-09-01,Utilities,Fixed,3134.00,3
+2023-10-01,Cash withdrawal,Discretionary,3000.00,1
+2023-10-01,Dining and delivery,Discretionary,7389.00,11
+2023-10-01,Entertainment,Discretionary,638.00,1
+2023-10-01,Family support,Fixed,6700.00,1
+2023-10-01,Gifts and festivals,Discretionary,7254.00,1
+2023-10-01,Groceries,Discretionary,9211.00,7
+2023-10-01,Health,Discretionary,1519.00,2
+2023-10-01,Household help,Fixed,3400.00,1
+2023-10-01,Loan EMIs,Fixed,26389.00,2
+2023-10-01,Rent,Fixed,16600.00,1
+2023-10-01,Shopping,Discretionary,13301.00,5
+2023-10-01,Subscriptions,Fixed,3367.00,4
+2023-10-01,Transport,Discretionary,5896.00,8
+2023-10-01,Travel,Discretionary,62000.00,3
+2023-10-01,Utilities,Fixed,3077.00,3
+2023-11-01,Cash withdrawal,Discretionary,2000.00,1
+2023-11-01,Dining and delivery,Discretionary,6161.00,10
+2023-11-01,Entertainment,Discretionary,2135.00,2
+2023-11-01,Family support,Fixed,6800.00,1
+2023-11-01,Gifts and festivals,Discretionary,12334.00,1
+2023-11-01,Groceries,Discretionary,9028.00,5
+2023-11-01,Health,Discretionary,1784.00,2
+2023-11-01,Household help,Fixed,3400.00,1
+2023-11-01,Loan EMIs,Fixed,26389.00,2
+2023-11-01,Rent,Fixed,16600.00,1
+2023-11-01,Shopping,Discretionary,8007.00,4
+2023-11-01,Subscriptions,Fixed,3377.00,4
+2023-11-01,Transport,Discretionary,5577.00,7
+2023-11-01,Utilities,Fixed,3140.00,3
+2023-12-01,Cash withdrawal,Discretionary,2000.00,1
+2023-12-01,Dining and delivery,Discretionary,7126.00,9
+2023-12-01,Entertainment,Discretionary,2858.00,2
+2023-12-01,Family support,Fixed,6800.00,1
+2023-12-01,Groceries,Discretionary,7241.00,4
+2023-12-01,Health,Discretionary,651.00,1
+2023-12-01,Household help,Fixed,3400.00,1
+2023-12-01,Loan EMIs,Fixed,26389.00,2
+2023-12-01,Rent,Fixed,16600.00,1
+2023-12-01,Shopping,Discretionary,1379.00,3
+2023-12-01,Subscriptions,Fixed,3397.00,4
+2023-12-01,Transport,Discretionary,10841.00,10
+2023-12-01,Utilities,Fixed,3299.00,3
+2024-01-01,Cash withdrawal,Discretionary,2500.00,1
+2024-01-01,Dining and delivery,Discretionary,5197.00,10
+2024-01-01,Entertainment,Discretionary,1301.00,2
+2024-01-01,Family support,Fixed,6800.00,1
+2024-01-01,Groceries,Discretionary,8370.00,4
+2024-01-01,Health,Discretionary,566.00,1
+2024-01-01,Household help,Fixed,3400.00,1
+2024-01-01,Insurance,Fixed,16913.00,1
+2024-01-01,Loan EMIs,Fixed,26389.00,2
+2024-01-01,Rent,Fixed,16600.00,1
+2024-01-01,Shopping,Discretionary,4220.00,5
+2024-01-01,Subscriptions,Fixed,3407.00,4
+2024-01-01,Transport,Discretionary,5632.00,5
+2024-01-01,Utilities,Fixed,3093.00,3
+2024-02-01,Cash withdrawal,Discretionary,3000.00,1
+2024-02-01,Dining and delivery,Discretionary,6793.00,6
+2024-02-01,Education,Discretionary,7800.00,1
+2024-02-01,Entertainment,Discretionary,1201.00,1
+2024-02-01,Family support,Fixed,6900.00,1
+2024-02-01,Groceries,Discretionary,8564.00,6
+2024-02-01,Health,Discretionary,1473.00,2
+2024-02-01,Household help,Fixed,3400.00,1
+2024-02-01,Loan EMIs,Fixed,26389.00,2
+2024-02-01,Rent,Fixed,16600.00,1
+2024-02-01,Shopping,Discretionary,9280.00,4
+2024-02-01,Subscriptions,Fixed,3417.00,4
+2024-02-01,Transport,Discretionary,5874.00,8
+2024-02-01,Utilities,Fixed,3193.00,3
+2024-03-01,Cash withdrawal,Discretionary,3000.00,1
+2024-03-01,Dining and delivery,Discretionary,5392.00,6
+2024-03-01,Entertainment,Discretionary,1475.00,1
+2024-03-01,Family support,Fixed,6900.00,1
+2024-03-01,Groceries,Discretionary,8438.00,4
+2024-03-01,Health,Discretionary,486.00,1
+2024-03-01,Household help,Fixed,3500.00,1
+2024-03-01,Insurance,Fixed,19350.00,1
+2024-03-01,Loan EMIs,Fixed,26389.00,2
+2024-03-01,Rent,Fixed,24000.00,1
+2024-03-01,Shopping,Discretionary,3295.00,3
+2024-03-01,Subscriptions,Fixed,3427.00,4
+2024-03-01,Transport,Discretionary,4912.00,7
+2024-03-01,Utilities,Fixed,3295.00,3
+2024-04-01,Cash withdrawal,Discretionary,2500.00,1
+2024-04-01,Dining and delivery,Discretionary,5493.00,12
+2024-04-01,Entertainment,Discretionary,1448.00,1
+2024-04-01,Family support,Fixed,6900.00,1
+2024-04-01,Groceries,Discretionary,9682.00,4
+2024-04-01,Health,Discretionary,2212.00,2
+2024-04-01,Household help,Fixed,3500.00,1
+2024-04-01,Loan EMIs,Fixed,26389.00,2
+2024-04-01,Rent,Fixed,24000.00,1
+2024-04-01,Shopping,Discretionary,9230.00,4
+2024-04-01,Subscriptions,Fixed,3437.00,4
+2024-04-01,Transport,Discretionary,5784.00,5
+2024-04-01,Travel,Discretionary,48000.00,3
+2024-04-01,Utilities,Fixed,4524.00,3
+2024-05-01,Cash withdrawal,Discretionary,3000.00,1
+2024-05-01,Dining and delivery,Discretionary,6014.00,12
+2024-05-01,Entertainment,Discretionary,631.00,1
+2024-05-01,Family support,Fixed,7000.00,1
+2024-05-01,Groceries,Discretionary,7879.00,6
+2024-05-01,Health,Discretionary,847.00,1
+2024-05-01,Household help,Fixed,3500.00,1
+2024-05-01,Loan EMIs,Fixed,26389.00,2
+2024-05-01,Rent,Fixed,24000.00,1
+2024-05-01,Shopping,Discretionary,3248.00,2
+2024-05-01,Subscriptions,Fixed,3457.00,4
+2024-05-01,Transport,Discretionary,6243.00,9
+2024-05-01,Utilities,Fixed,4590.00,3
+2024-06-01,Cash withdrawal,Discretionary,2000.00,1
+2024-06-01,Dining and delivery,Discretionary,7870.00,9
+2024-06-01,Entertainment,Discretionary,1448.00,1
+2024-06-01,Family support,Fixed,7000.00,1
+2024-06-01,Groceries,Discretionary,8942.00,7
+2024-06-01,Health,Discretionary,741.00,1
+2024-06-01,Household help,Fixed,3500.00,1
+2024-06-01,Insurance,Fixed,11800.00,1
+2024-06-01,Loan EMIs,Fixed,26389.00,2
+2024-06-01,Rent,Fixed,24000.00,1
+2024-06-01,Shopping,Discretionary,3639.00,4
+2024-06-01,Subscriptions,Fixed,3467.00,4
+2024-06-01,Transport,Discretionary,11779.00,8
+2024-06-01,Utilities,Fixed,5000.00,3
+2024-07-01,Cash withdrawal,Discretionary,2500.00,1
+2024-07-01,Dining and delivery,Discretionary,8342.00,7
+2024-07-01,Entertainment,Discretionary,816.00,1
+2024-07-01,Family support,Fixed,7000.00,1
+2024-07-01,Groceries,Discretionary,9060.00,4
+2024-07-01,Health,Discretionary,602.00,1
+2024-07-01,Household help,Fixed,3500.00,1
+2024-07-01,Loan EMIs,Fixed,26389.00,2
+2024-07-01,Rent,Fixed,24000.00,1
+2024-07-01,Shopping,Discretionary,3533.00,5
+2024-07-01,Subscriptions,Fixed,3477.00,4
+2024-07-01,Transport,Discretionary,5984.00,5
+2024-07-01,Utilities,Fixed,3019.00,3
+2024-08-01,Cash withdrawal,Discretionary,2000.00,1
+2024-08-01,Dining and delivery,Discretionary,8413.00,6
+2024-08-01,Entertainment,Discretionary,1179.00,1
+2024-08-01,Family support,Fixed,7100.00,1
+2024-08-01,Groceries,Discretionary,10037.00,7
+2024-08-01,Health,Discretionary,978.00,1
+2024-08-01,Household help,Fixed,3500.00,1
+2024-08-01,Loan EMIs,Fixed,26389.00,2
+2024-08-01,Rent,Fixed,24000.00,1
+2024-08-01,Shopping,Discretionary,3499.00,2
+2024-08-01,Subscriptions,Fixed,3487.00,4
+2024-08-01,Transport,Discretionary,5933.00,5
+2024-08-01,Utilities,Fixed,3029.00,3
+2024-09-01,Cash withdrawal,Discretionary,2000.00,1
+2024-09-01,Dining and delivery,Discretionary,6130.00,7
+2024-09-01,Entertainment,Discretionary,2313.00,2
+2024-09-01,Family support,Fixed,7100.00,1
+2024-09-01,Groceries,Discretionary,7962.00,7
+2024-09-01,Health,Discretionary,418.00,1
+2024-09-01,Household help,Fixed,3600.00,1
+2024-09-01,Loan EMIs,Fixed,26389.00,2
+2024-09-01,Rent,Fixed,24000.00,1
+2024-09-01,Shopping,Discretionary,5693.00,5
+2024-09-01,Subscriptions,Fixed,3507.00,4
+2024-09-01,Transport,Discretionary,5975.00,9
+2024-09-01,Utilities,Fixed,3364.00,3
+2024-10-01,Cash withdrawal,Discretionary,2000.00,1
+2024-10-01,Dining and delivery,Discretionary,5822.00,7
+2024-10-01,Entertainment,Discretionary,923.00,1
+2024-10-01,Family support,Fixed,7100.00,1
+2024-10-01,Gifts and festivals,Discretionary,12757.00,1
+2024-10-01,Groceries,Discretionary,10075.00,6
+2024-10-01,Health,Discretionary,533.00,1
+2024-10-01,Household help,Fixed,3600.00,1
+2024-10-01,Loan EMIs,Fixed,13493.00,1
+2024-10-01,Rent,Fixed,24000.00,1
+2024-10-01,Shopping,Discretionary,10620.00,4
+2024-10-01,Subscriptions,Fixed,3517.00,4
+2024-10-01,Transport,Discretionary,5589.00,8
+2024-10-01,Utilities,Fixed,3332.00,3
+2024-11-01,Cash withdrawal,Discretionary,2500.00,1
+2024-11-01,Dining and delivery,Discretionary,7306.00,8
+2024-11-01,Entertainment,Discretionary,2696.00,2
+2024-11-01,Family support,Fixed,7200.00,1
+2024-11-01,Gifts and festivals,Discretionary,10260.00,1
+2024-11-01,Groceries,Discretionary,9376.00,7
+2024-11-01,Health,Discretionary,606.00,1
+2024-11-01,Household help,Fixed,3600.00,1
+2024-11-01,Loan EMIs,Fixed,13493.00,1
+2024-11-01,Rent,Fixed,24000.00,1
+2024-11-01,Shopping,Discretionary,10307.00,5
+2024-11-01,Subscriptions,Fixed,3527.00,4
+2024-11-01,Transport,Discretionary,5898.00,5
+2024-11-01,Utilities,Fixed,3239.00,3
+2024-12-01,Cash withdrawal,Discretionary,2500.00,1
+2024-12-01,Dining and delivery,Discretionary,6369.00,6
+2024-12-01,Entertainment,Discretionary,1637.00,2
+2024-12-01,Family support,Fixed,7200.00,1
+2024-12-01,Groceries,Discretionary,10328.00,6
+2024-12-01,Health,Discretionary,762.00,1
+2024-12-01,Household help,Fixed,3600.00,1
+2024-12-01,Loan EMIs,Fixed,13493.00,1
+2024-12-01,Rent,Fixed,24000.00,1
+2024-12-01,Shopping,Discretionary,6618.00,4
+2024-12-01,Subscriptions,Fixed,3547.00,4
+2024-12-01,Transport,Discretionary,12298.00,10
+2024-12-01,Travel,Discretionary,70000.00,3
+2024-12-01,Utilities,Fixed,3124.00,3
+2025-01-01,Cash withdrawal,Discretionary,2000.00,1
+2025-01-01,Dining and delivery,Discretionary,5921.00,6
+2025-01-01,Entertainment,Discretionary,2505.00,2
+2025-01-01,Family support,Fixed,7300.00,1
+2025-01-01,Groceries,Discretionary,8064.00,6
+2025-01-01,Health,Discretionary,542.00,1
+2025-01-01,Household help,Fixed,3600.00,1
+2025-01-01,Insurance,Fixed,18266.00,1
+2025-01-01,Loan EMIs,Fixed,13493.00,1
+2025-01-01,Rent,Fixed,24000.00,1
+2025-01-01,Shopping,Discretionary,3419.00,2
+2025-01-01,Subscriptions,Fixed,3577.00,4
+2025-01-01,Transport,Discretionary,6009.00,5
+2025-01-01,Utilities,Fixed,3368.00,3
+2025-02-01,Cash withdrawal,Discretionary,2500.00,1
+2025-02-01,Dining and delivery,Discretionary,6985.00,8
+2025-02-01,Entertainment,Discretionary,1547.00,1
+2025-02-01,Family support,Fixed,7300.00,1
+2025-02-01,Groceries,Discretionary,9720.00,7
+2025-02-01,Health,Discretionary,585.00,1
+2025-02-01,Household help,Fixed,3600.00,1
+2025-02-01,Loan EMIs,Fixed,13493.00,1
+2025-02-01,Rent,Fixed,24000.00,1
+2025-02-01,Shopping,Discretionary,5880.00,2
+2025-02-01,Subscriptions,Fixed,3587.00,4
+2025-02-01,Transport,Discretionary,5514.00,5
+2025-02-01,Utilities,Fixed,3091.00,3
+2025-03-01,Cash withdrawal,Discretionary,2000.00,1
+2025-03-01,Dining and delivery,Discretionary,8523.00,10
+2025-03-01,Entertainment,Discretionary,1160.00,1
+2025-03-01,Family support,Fixed,7300.00,1
+2025-03-01,Groceries,Discretionary,8913.00,6
+2025-03-01,Health,Discretionary,486.00,1
+2025-03-01,Household help,Fixed,3700.00,1
+2025-03-01,Insurance,Fixed,17415.00,1
+2025-03-01,Loan EMIs,Fixed,13493.00,1
+2025-03-01,Rent,Fixed,25200.00,1
+2025-03-01,Shopping,Discretionary,3391.00,3
+2025-03-01,Subscriptions,Fixed,3597.00,4
+2025-03-01,Transport,Discretionary,5938.00,9
+2025-03-01,Utilities,Fixed,3270.00,3
+2025-04-01,Cash withdrawal,Discretionary,3000.00,1
+2025-04-01,Dining and delivery,Discretionary,8186.00,8
+2025-04-01,Entertainment,Discretionary,2314.00,2
+2025-04-01,Family support,Fixed,7400.00,1
+2025-04-01,Groceries,Discretionary,10184.00,6
+2025-04-01,Health,Discretionary,403.00,1
+2025-04-01,Household help,Fixed,3700.00,1
+2025-04-01,Loan EMIs,Fixed,13493.00,1
+2025-04-01,Rent,Fixed,25200.00,1
+2025-04-01,Shopping,Discretionary,2984.00,5
+2025-04-01,Subscriptions,Fixed,3617.00,4
+2025-04-01,Transport,Discretionary,6620.00,5
+2025-04-01,Utilities,Fixed,5158.00,3
+2025-05-01,Cash withdrawal,Discretionary,2000.00,1
+2025-05-01,Dining and delivery,Discretionary,6748.00,7
+2025-05-01,Entertainment,Discretionary,775.00,1
+2025-05-01,Family support,Fixed,7400.00,1
+2025-05-01,Groceries,Discretionary,7981.00,5
+2025-05-01,Health,Discretionary,1991.00,2
+2025-05-01,Household help,Fixed,3700.00,1
+2025-05-01,Loan EMIs,Fixed,13493.00,1
+2025-05-01,Rent,Fixed,25200.00,1
+2025-05-01,Shopping,Discretionary,6096.00,4
+2025-05-01,Subscriptions,Fixed,3627.00,4
+2025-05-01,Transport,Discretionary,6124.00,5
+2025-05-01,Utilities,Fixed,5749.00,3
+2025-06-01,Cash withdrawal,Discretionary,2500.00,1
+2025-06-01,Dining and delivery,Discretionary,7237.00,12
+2025-06-01,Entertainment,Discretionary,1026.00,1
+2025-06-01,Family support,Fixed,7400.00,1
+2025-06-01,Groceries,Discretionary,9160.00,6
+2025-06-01,Health,Discretionary,653.00,1
+2025-06-01,Household help,Fixed,3700.00,1
+2025-06-01,Insurance,Fixed,11800.00,1
+2025-06-01,Loan EMIs,Fixed,13493.00,1
+2025-06-01,Rent,Fixed,25200.00,1
+2025-06-01,Shopping,Discretionary,3441.00,2
+2025-06-01,Subscriptions,Fixed,3637.00,4
+2025-06-01,Transport,Discretionary,15007.00,7
+2025-06-01,Travel,Discretionary,55000.00,3
+2025-06-01,Utilities,Fixed,4894.00,3
+2025-07-01,Cash withdrawal,Discretionary,2500.00,1
+2025-07-01,Dining and delivery,Discretionary,8763.00,7
+2025-07-01,Entertainment,Discretionary,804.00,1
+2025-07-01,Family support,Fixed,7500.00,1
+2025-07-01,Groceries,Discretionary,10492.00,6
+2025-07-01,Health,Discretionary,1006.00,1
+2025-07-01,Household help,Fixed,3700.00,1
+2025-07-01,Loan EMIs,Fixed,13493.00,1
+2025-07-01,Rent,Fixed,25200.00,1
+2025-07-01,Shopping,Discretionary,5807.00,3
+2025-07-01,Subscriptions,Fixed,3657.00,4
+2025-07-01,Transport,Discretionary,6362.00,5
+2025-07-01,Utilities,Fixed,3576.00,3
+2025-08-01,Cash withdrawal,Discretionary,3000.00,1
+2025-08-01,Dining and delivery,Discretionary,6779.00,11
+2025-08-01,Entertainment,Discretionary,2255.00,2
+2025-08-01,Family support,Fixed,7500.00,1
+2025-08-01,Groceries,Discretionary,9575.00,7
+2025-08-01,Health,Discretionary,705.00,1
+2025-08-01,Household help,Fixed,3800.00,1
+2025-08-01,Loan EMIs,Fixed,13493.00,1
+2025-08-01,Rent,Fixed,25200.00,1
+2025-08-01,Shopping,Discretionary,4512.00,4
+2025-08-01,Subscriptions,Fixed,3667.00,4
+2025-08-01,Transport,Discretionary,6498.00,6
+2025-08-01,Utilities,Fixed,3501.00,3
+2025-09-01,Cash withdrawal,Discretionary,3000.00,1
+2025-09-01,Dining and delivery,Discretionary,6501.00,6
+2025-09-01,Education,Discretionary,14200.00,1
+2025-09-01,Entertainment,Discretionary,845.00,1
+2025-09-01,Family support,Fixed,7500.00,1
+2025-09-01,Groceries,Discretionary,10100.00,7
+2025-09-01,Health,Discretionary,584.00,1
+2025-09-01,Household help,Fixed,3800.00,1
+2025-09-01,Loan EMIs,Fixed,13493.00,1
+2025-09-01,Rent,Fixed,25200.00,1
+2025-09-01,Shopping,Discretionary,3031.00,2
+2025-09-01,Subscriptions,Fixed,3677.00,4
+2025-09-01,Transport,Discretionary,6342.00,5
+2025-09-01,Utilities,Fixed,3647.00,3
+2025-10-01,Cash withdrawal,Discretionary,2000.00,1
+2025-10-01,Dining and delivery,Discretionary,7876.00,9
+2025-10-01,Entertainment,Discretionary,1664.00,1
+2025-10-01,Family support,Fixed,7600.00,1
+2025-10-01,Gifts and festivals,Discretionary,14745.00,1
+2025-10-01,Groceries,Discretionary,8908.00,7
+2025-10-01,Health,Discretionary,597.00,1
+2025-10-01,Household help,Fixed,3800.00,1
+2025-10-01,Loan EMIs,Fixed,13493.00,1
+2025-10-01,Rent,Fixed,25200.00,1
+2025-10-01,Shopping,Discretionary,12576.00,5
+2025-10-01,Subscriptions,Fixed,3697.00,4
+2025-10-01,Transport,Discretionary,6556.00,6
+2025-10-01,Utilities,Fixed,3305.00,3
+2025-11-01,Cash withdrawal,Discretionary,3000.00,1
+2025-11-01,Dining and delivery,Discretionary,7824.00,9
+2025-11-01,Entertainment,Discretionary,1326.00,1
+2025-11-01,Family support,Fixed,7600.00,1
+2025-11-01,Gifts and festivals,Discretionary,13880.00,1
+2025-11-01,Groceries,Discretionary,10493.00,4
+2025-11-01,Health,Discretionary,477.00,1
+2025-11-01,Household help,Fixed,3800.00,1
+2025-11-01,Loan EMIs,Fixed,13493.00,1
+2025-11-01,Rent,Fixed,25200.00,1
+2025-11-01,Shopping,Discretionary,11521.00,5
+2025-11-01,Subscriptions,Fixed,3707.00,4
+2025-11-01,Transport,Discretionary,7782.00,9
+2025-11-01,Utilities,Fixed,3394.00,3
+2025-12-01,Cash withdrawal,Discretionary,2500.00,1
+2025-12-01,Dining and delivery,Discretionary,5782.00,7
+2025-12-01,Entertainment,Discretionary,1468.00,1
+2025-12-01,Family support,Fixed,7600.00,1
+2025-12-01,Groceries,Discretionary,8313.00,7
+2025-12-01,Health,Discretionary,433.00,1
+2025-12-01,Household help,Fixed,3800.00,1
+2025-12-01,Loan EMIs,Fixed,13493.00,1
+2025-12-01,Rent,Fixed,25200.00,1
+2025-12-01,Shopping,Discretionary,4650.00,4
+2025-12-01,Subscriptions,Fixed,3717.00,4
+2025-12-01,Transport,Discretionary,13572.00,10
+2025-12-01,Utilities,Fixed,3714.00,3
+2026-01-01,Cash withdrawal,Discretionary,2500.00,1
+2026-01-01,Dining and delivery,Discretionary,8892.00,10
+2026-01-01,Entertainment,Discretionary,1976.00,2
+2026-01-01,Family support,Fixed,7700.00,1
+2026-01-01,Groceries,Discretionary,8332.00,7
+2026-01-01,Health,Discretionary,1143.00,1
+2026-01-01,Household help,Fixed,3800.00,1
+2026-01-01,Insurance,Fixed,19727.00,1
+2026-01-01,Loan EMIs,Fixed,13493.00,1
+2026-01-01,Rent,Fixed,25200.00,1
+2026-01-01,Shopping,Discretionary,3769.00,4
+2026-01-01,Subscriptions,Fixed,3737.00,4
+2026-01-01,Transport,Discretionary,5494.00,6
+2026-01-01,Utilities,Fixed,3501.00,3
+2026-02-01,Cash withdrawal,Discretionary,2500.00,1
+2026-02-01,Dining and delivery,Discretionary,8255.00,10
+2026-02-01,Entertainment,Discretionary,1798.00,1
+2026-02-01,Family support,Fixed,7700.00,1
+2026-02-01,Groceries,Discretionary,9941.00,5
+2026-02-01,Health,Discretionary,490.00,1
+2026-02-01,Household help,Fixed,3900.00,1
+2026-02-01,Loan EMIs,Fixed,13493.00,1
+2026-02-01,Rent,Fixed,25200.00,1
+2026-02-01,Shopping,Discretionary,9291.00,4
+2026-02-01,Subscriptions,Fixed,3747.00,4
+2026-02-01,Transport,Discretionary,7278.00,8
+2026-02-01,Travel,Discretionary,85000.00,3
+2026-02-01,Utilities,Fixed,3452.00,3
+2026-03-01,Cash withdrawal,Discretionary,3000.00,1
+2026-03-01,Dining and delivery,Discretionary,7444.00,11
+2026-03-01,Entertainment,Discretionary,1095.00,1
+2026-03-01,Family support,Fixed,7800.00,1
+2026-03-01,Groceries,Discretionary,9215.00,5
+2026-03-01,Health,Discretionary,998.00,1
+2026-03-01,Household help,Fixed,3900.00,1
+2026-03-01,Insurance,Fixed,15674.00,1
+2026-03-01,Loan EMIs,Fixed,13493.00,1
+2026-03-01,Rent,Fixed,26500.00,1
+2026-03-01,Shopping,Discretionary,4810.00,3
+2026-03-01,Subscriptions,Fixed,3767.00,4
+2026-03-01,Transport,Discretionary,6544.00,6
+2026-03-01,Utilities,Fixed,3179.00,3
+2026-04-01,Cash withdrawal,Discretionary,2000.00,1
+2026-04-01,Dining and delivery,Discretionary,9043.00,7
+2026-04-01,Entertainment,Discretionary,790.00,1
+2026-04-01,Family support,Fixed,7800.00,1
+2026-04-01,Groceries,Discretionary,11163.00,6
+2026-04-01,Health,Discretionary,483.00,1
+2026-04-01,Household help,Fixed,3900.00,1
+2026-04-01,Loan EMIs,Fixed,13493.00,1
+2026-04-01,Rent,Fixed,26500.00,1
+2026-04-01,Shopping,Discretionary,1930.00,5
+2026-04-01,Subscriptions,Fixed,3777.00,4
+2026-04-01,Transport,Discretionary,6909.00,9
+2026-04-01,Utilities,Fixed,5862.00,3
+2026-05-01,Cash withdrawal,Discretionary,2000.00,1
+2026-05-01,Dining and delivery,Discretionary,6291.00,12
+2026-05-01,Entertainment,Discretionary,661.00,1
+2026-05-01,Family support,Fixed,7800.00,1
+2026-05-01,Groceries,Discretionary,11220.00,5
+2026-05-01,Health,Discretionary,1158.00,1
+2026-05-01,Household help,Fixed,3900.00,1
+2026-05-01,Loan EMIs,Fixed,13493.00,1
+2026-05-01,Rent,Fixed,26500.00,1
+2026-05-01,Shopping,Discretionary,6850.00,3
+2026-05-01,Subscriptions,Fixed,3787.00,4
+2026-05-01,Transport,Discretionary,6726.00,9
+2026-05-01,Utilities,Fixed,5522.00,3
+2026-06-01,Cash withdrawal,Discretionary,2500.00,1
+2026-06-01,Dining and delivery,Discretionary,7391.00,6
+2026-06-01,Entertainment,Discretionary,620.00,1
+2026-06-01,Family support,Fixed,7900.00,1
+2026-06-01,Groceries,Discretionary,11307.00,6
+2026-06-01,Health,Discretionary,859.00,1
+2026-06-01,Household help,Fixed,3900.00,1
+2026-06-01,Insurance,Fixed,11800.00,1
+2026-06-01,Loan EMIs,Fixed,13493.00,1
+2026-06-01,Rent,Fixed,26500.00,1
+2026-06-01,Shopping,Discretionary,2544.00,2
+2026-06-01,Subscriptions,Fixed,3807.00,4
+2026-06-01,Transport,Discretionary,10880.00,10
+2026-06-01,Utilities,Fixed,5320.00,3
+2026-07-01,Cash withdrawal,Discretionary,3000.00,1
+2026-07-01,Dining and delivery,Discretionary,6097.00,10
+2026-07-01,Entertainment,Discretionary,2417.00,2
+2026-07-01,Family support,Fixed,7900.00,1
+2026-07-01,Groceries,Discretionary,10565.00,5
+2026-07-01,Health,Discretionary,769.00,1
+2026-07-01,Household help,Fixed,4000.00,1
+2026-07-01,Loan EMIs,Fixed,13493.00,1
+2026-07-01,Rent,Fixed,26500.00,1
+2026-07-01,Shopping,Discretionary,5825.00,4
+2026-07-01,Subscriptions,Fixed,3817.00,4
+2026-07-01,Transport,Discretionary,7104.00,8
+2026-07-01,Utilities,Fixed,3231.00,3
+2026-08-01,Cash withdrawal,Discretionary,2500.00,1
+2026-08-01,Dining and delivery,Discretionary,6711.00,12
+2026-08-01,Entertainment,Discretionary,1790.00,2
+2026-08-01,Family support,Fixed,8000.00,1
+2026-08-01,Groceries,Discretionary,10741.00,7
+2026-08-01,Health,Discretionary,706.00,1
+2026-08-01,Household help,Fixed,4000.00,1
+2026-08-01,Loan EMIs,Fixed,13493.00,1
+2026-08-01,Rent,Fixed,26500.00,1
+2026-08-01,Shopping,Discretionary,7920.00,2
+2026-08-01,Subscriptions,Fixed,3837.00,4
+2026-08-01,Transport,Discretionary,6743.00,6
+2026-08-01,Utilities,Fixed,3810.00,3
+2026-09-01,Cash withdrawal,Discretionary,2500.00,1
+2026-09-01,Dining and delivery,Discretionary,7908.00,12
+2026-09-01,Entertainment,Discretionary,3044.00,2
+2026-09-01,Family support,Fixed,8000.00,1
+2026-09-01,Groceries,Discretionary,9839.00,5
+2026-09-01,Health,Discretionary,414.00,1
+2026-09-01,Household help,Fixed,4000.00,1
+2026-09-01,Loan EMIs,Fixed,13493.00,1
+2026-09-01,Rent,Fixed,26500.00,1
+2026-09-01,Shopping,Discretionary,4388.00,4
+2026-09-01,Subscriptions,Fixed,3847.00,4
+2026-09-01,Transport,Discretionary,7457.00,9
+2026-09-01,Utilities,Fixed,3594.00,3
