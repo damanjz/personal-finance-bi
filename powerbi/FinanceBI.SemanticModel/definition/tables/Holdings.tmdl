@@ -1,0 +1,44 @@
+table Holdings
+
+	column month
+		dataType: dateTime
+		formatString: Short Date
+		isHidden
+		summarizeBy: none
+		sourceColumn: month
+
+	column instrument
+		dataType: string
+		summarizeBy: none
+		sourceColumn: instrument
+
+	column asset_class
+		dataType: string
+		summarizeBy: none
+		sourceColumn: asset_class
+
+	column value
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: value
+
+	partition Holdings = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_holdings.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"month", type date},
+						{"instrument", type text},
+						{"asset_class", type text},
+						{"value", type number}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"

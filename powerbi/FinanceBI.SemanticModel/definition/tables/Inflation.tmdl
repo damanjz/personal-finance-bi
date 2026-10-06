@@ -1,0 +1,11 @@
+table Inflation
+
+	column Inflation
+		dataType: double
+		formatString: "0.0""%"""
+		summarizeBy: none
+		sourceColumn: [Inflation]
+
+	partition Inflation = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 3, 9, 0.5 ), "Inflation", [Value] )

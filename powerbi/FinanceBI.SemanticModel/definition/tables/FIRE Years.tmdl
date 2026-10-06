@@ -1,0 +1,22 @@
+table 'FIRE Years'
+
+	column 'Year offset'
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: [Year offset]
+
+	column Age
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: [Age]
+
+	partition 'FIRE Years' = calculated
+		mode: import
+		source = ```
+				VAR age = MAX ( 'FIRE Inputs'[current_age] )
+				RETURN
+				    SELECTCOLUMNS ( GENERATESERIES ( 0, 30, 1 ), "Year offset", [Value], "Age", [Value] + age )
+				```

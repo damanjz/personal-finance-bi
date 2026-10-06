@@ -1,0 +1,96 @@
+table 'Net Worth'
+
+	column month
+		dataType: dateTime
+		formatString: Short Date
+		isHidden
+		summarizeBy: none
+		sourceColumn: month
+
+	column cash_reserves
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: cash_reserves
+
+	column equity
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: equity
+
+	column fixed_income
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: fixed_income
+
+	column real_estate
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: real_estate
+
+	column total_assets
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: total_assets
+
+	column loans
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: loans
+
+	column card_balance
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: card_balance
+
+	column total_liabilities
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: total_liabilities
+
+	column net_worth
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: net_worth
+
+	partition 'Net Worth' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "mart_net_worth.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"month", type date},
+						{"cash_reserves", type number},
+						{"equity", type number},
+						{"fixed_income", type number},
+						{"real_estate", type number},
+						{"total_assets", type number},
+						{"loans", type number},
+						{"card_balance", type number},
+						{"total_liabilities", type number},
+						{"net_worth", type number}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"

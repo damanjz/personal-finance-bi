@@ -1,0 +1,11 @@
+table 'Expected return'
+
+	column 'Expected return'
+		dataType: double
+		formatString: "0.0""%"""
+		summarizeBy: none
+		sourceColumn: [Expected return]
+
+	partition 'Expected return' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 6, 14, 0.5 ), "Expected return", [Value] )

@@ -1,0 +1,28 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["TMDL-Extension"]
+
+ref table Month
+ref table Category
+ref table Transactions
+ref table Monthly
+ref table 'Category Spend'
+ref table Holdings
+ref table Liabilities
+ref table 'Net Worth'
+ref table Cashflow
+ref table 'FIRE Inputs'
+ref table Metrics
+ref table 'FIRE Years'
+ref table 'Expected return'
+ref table Inflation
+ref table 'Withdrawal rate'

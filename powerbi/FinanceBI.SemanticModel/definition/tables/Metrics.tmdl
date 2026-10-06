@@ -1,0 +1,207 @@
+table Metrics
+
+	/// Average monthly take-home, bonus and other income, in lakh.
+	measure 'Avg money in' = DIVIDE ( SUM ( Monthly[income] ), DISTINCTCOUNT ( Monthly[month] ) ) / 100000
+		formatString: """₹""#,0.00"" L"""
+
+	/// Average monthly fixed plus discretionary spending, in lakh.
+	measure 'Avg spend' = DIVIDE ( SUM ( Monthly[total_spend] ), DISTINCTCOUNT ( Monthly[month] ) ) / 100000
+		formatString: """₹""#,0.00"" L"""
+
+	/// Average monthly net new money into investments, in lakh.
+	measure 'Avg invested' = DIVIDE ( SUM ( Monthly[invested] ) - SUM ( Monthly[withdrawn] ), DISTINCTCOUNT ( Monthly[month] ) ) / 100000
+		formatString: """₹""#,0.00"" L"""
+
+	/// Share of money in that was not spent. Weighted across the selected months.
+	measure 'Savings rate' = DIVIDE ( SUM ( Monthly[income] ) - SUM ( Monthly[total_spend] ), SUM ( Monthly[income] ) )
+		formatString: 0.0%
+
+	/// Savings rate over the trailing 12 months.
+	measure 'Savings rate (12m)' = ```
+			VAR m = MAX ( 'Month'[month] )
+			RETURN
+			    CALCULATE (
+			        [Savings rate],
+			        FILTER ( ALL ( 'Month' ), 'Month'[month] > EDATE ( m, -12 ) && 'Month'[month] <= m )
+			    )
+			```
+		formatString: 0.0%
+
+	/// Loan EMIs as a share of gross pay.
+	measure 'Debt to income' = DIVIDE ( SUM ( Monthly[emi] ), SUM ( Monthly[gross] ) )
+		formatString: 0.0%
+
+	/// Assets minus liabilities at the last month in context, in lakh.
+	measure 'Net worth' = ```
+			VAR m = MAX ( 'Month'[month] )
+			RETURN CALCULATE ( SUM ( 'Net Worth'[net_worth] ), 'Month'[month] = m ) / 100000
+			```
+		formatString: """₹""#,0.0"" L"""
+
+	/// Total assets at the last month in context, in lakh.
+	measure 'Total assets' = ```
+			VAR m = MAX ( 'Month'[month] )
+			RETURN CALCULATE ( SUM ( 'Net Worth'[total_assets] ), 'Month'[month] = m ) / 100000
+			```
+		formatString: """₹""#,0.0"" L"""
+
+	/// Loans plus card balance at the last month in context, in lakh.
+	measure 'Total liabilities' = ```
+			VAR m = MAX ( 'Month'[month] )
+			RETURN CALCULATE ( SUM ( 'Net Worth'[total_liabilities] ), 'Month'[month] = m ) / 100000
+			```
+		formatString: """₹""#,0.0"" L"""
+
+	/// Net worth at the end of the selection minus net worth at its start, in lakh.
+	measure 'Net worth change' = ```
+			VAR f = MIN ( 'Month'[month] )
+			VAR first = CALCULATE ( SUM ( 'Net Worth'[net_worth] ), 'Month'[month] = f ) / 100000
+			RETURN [Net worth] - first
+			```
+		formatString: """+₹""#,0.0"" L"";""−₹""#,0.0"" L"""
+
+	/// Value of holdings at the last month in context, in lakh.
+	measure 'Holding value' = ```
+			VAR m = MAX ( 'Month'[month] )
+			RETURN CALCULATE ( SUM ( Holdings[value] ), 'Month'[month] = m ) / 100000
+			```
+		formatString: """₹""#,0.0"" L"""
+
+	/// Share of total assets.
+	measure 'Asset share' = DIVIDE ( [Holding value], CALCULATE ( [Holding value], REMOVEFILTERS ( Holdings[asset_class], Holdings[instrument] ) ) )
+		formatString: 0.0%
+
+	/// Share of assets in savings account and fixed deposits.
+	measure 'Cash share' = CALCULATE ( [Asset share], Holdings[asset_class] = "Cash reserves" )
+		formatString: 0.0%
+
+	/// Months of average spending that cash reserves cover.
+	measure 'Emergency cover' = ```
+			DIVIDE (
+			    CALCULATE ( [Holding value], Holdings[asset_class] = "Cash reserves" ) * 100000,
+			    DIVIDE ( SUM ( Monthly[total_spend] ), DISTINCTCOUNT ( Monthly[month] ) )
+			)
+			```
+		formatString: "0.0"" months"""
+
+	/// Average monthly spend in thousands.
+	measure 'Category spend' = ```
+			DIVIDE (
+			    SUM ( 'Category Spend'[spend] ),
+			    CALCULATE ( DISTINCTCOUNT ( Monthly[month] ), REMOVEFILTERS ( Category ) )
+			) / 1000
+			```
+		formatString: """₹""#,0.0""k"""
+
+	/// Rupees moving between two cashflow nodes.
+	measure Flow = SUM ( Cashflow[amount] )
+		formatString: """₹""#,0"
+
+	/// Cashflow up to the fixed, discretionary, investment and cash split; category detail sits in the bar chart.
+	measure 'Flow (summary)' = CALCULATE ( SUM ( Cashflow[amount] ), Cashflow[stage] <= 3 ) / 100000
+		formatString: """₹""#,0.0"" L"""
+
+	/// Nominal annual portfolio return chosen on the slider.
+	measure 'Return assumption' = SELECTEDVALUE ( 'Expected return'[Expected return], 10 ) / 100
+		formatString: 0.0%
+
+	/// Annual inflation chosen on the slider.
+	measure 'Inflation assumption' = SELECTEDVALUE ( Inflation[Inflation], 6 ) / 100
+		formatString: 0.0%
+
+	/// Safe withdrawal rate chosen on the slider.
+	measure 'Withdrawal rate assumption' = SELECTEDVALUE ( 'Withdrawal rate'[Withdrawal rate], 3.5 ) / 100
+		formatString: 0.0%
+
+	/// Portfolio projected for a year: today's assets compounded, plus contributions growing 7% a year. Crore.
+	measure 'Projected assets' = ```
+			VAR y = SELECTEDVALUE ( 'FIRE Years'[Year offset] )
+			VAR r = [Return assumption]
+			VAR g = 0.07
+			VAR a = SUM ( 'FIRE Inputs'[investable_assets] )
+			VAR c = SUM ( 'FIRE Inputs'[annual_contribution] )
+			VAR growth =
+			    IF ( ABS ( r - g ) < 0.000000001, c * y * POWER ( 1 + r, y - 1 ), c * ( POWER ( 1 + r, y ) - POWER ( 1 + g, y ) ) / ( r - g ) )
+			RETURN IF ( NOT ISBLANK ( y ), ( a * POWER ( 1 + r, y ) + growth ) / 10000000 )
+			```
+		formatString: """₹""#,0.00"" Cr"""
+
+	/// Corpus needed that year: inflated annual spend divided by the withdrawal rate. Crore.
+	measure 'FIRE target' = ```
+			VAR y = SELECTEDVALUE ( 'FIRE Years'[Year offset] )
+			VAR s = SUM ( 'FIRE Inputs'[annual_spend] )
+			RETURN IF ( NOT ISBLANK ( y ), s * POWER ( 1 + [Inflation assumption], y ) / [Withdrawal rate assumption] / 10000000 )
+			```
+		formatString: """₹""#,0.00"" Cr"""
+
+	/// First age at which projected assets cover the FIRE target.
+	measure 'FIRE age' = MINX ( FILTER ( ALL ( 'FIRE Years' ), [Projected assets] >= [FIRE target] ), 'FIRE Years'[Age] )
+		formatString: 0
+
+	/// Years from today until the FIRE age.
+	measure 'Years to FIRE' = [FIRE age] - MAX ( 'FIRE Inputs'[current_age] )
+		formatString: "0"" years"""
+
+	/// FIRE target in the year it is reached. Crore.
+	measure 'Corpus at FIRE' = ```
+			VAR age = [FIRE age]
+			RETURN CALCULATE ( [FIRE target], FILTER ( ALL ( 'FIRE Years' ), 'FIRE Years'[Age] = age ) )
+			```
+		formatString: """₹""#,0.00"" Cr"""
+
+	/// Today's investable assets as a share of today's FIRE target.
+	measure 'FIRE progress' = DIVIDE ( SUM ( 'FIRE Inputs'[investable_assets] ), SUM ( 'FIRE Inputs'[annual_spend] ) / [Withdrawal rate assumption] )
+		formatString: 0%
+
+	/// One-line reading of the cashflow page.
+	measure 'Insight: flow' = ```
+			VAR income = SUM ( Monthly[income] )
+			VAR fixedShare = DIVIDE ( SUM ( Monthly[fixed_spend] ), income )
+			VAR investShare = DIVIDE ( SUM ( Monthly[invested] ) - SUM ( Monthly[withdrawn] ), income )
+			VAR top2 =
+			    CONCATENATEX (
+			        TOPN ( 2, VALUES ( 'Category Spend'[category] ), CALCULATE ( SUM ( 'Category Spend'[spend] ) ) ),
+			        'Category Spend'[category], " and ", CALCULATE ( SUM ( 'Category Spend'[spend] ) ), DESC
+			    )
+			RETURN
+			    "Fixed costs take " & FORMAT ( fixedShare, "0%" ) & " of money in and " & FORMAT ( investShare, "0%" )
+			        & " goes into investments. The two biggest spending lines are " & SUBSTITUTE ( LOWER ( top2 ), "emis", "EMIs" ) & "." 
+			```
+
+	/// One-line reading of the net worth page.
+	measure 'Insight: own' = ```
+			VAR f = MIN ( 'Month'[month] )
+			VAR first = CALCULATE ( SUM ( 'Net Worth'[net_worth] ), 'Month'[month] = f ) / 100000
+			RETURN
+			    "Net worth moved from " & FORMAT ( first, "₹#,0.0" ) & " L to " & FORMAT ( [Net worth], "₹#,0.0" ) & " L. "
+			        & FORMAT ( [Cash share], "0%" ) & " of assets sits in cash and fixed deposits, "
+			        & FORMAT ( [Emergency cover], "0" ) & " months of spending." 
+			```
+
+	/// One-line reading of the on-track page.
+	measure 'Insight: track' = ```
+			"The savings rate is " & FORMAT ( [Savings rate], "0%" ) & " for this period, and loan EMIs take "
+			    & FORMAT ( [Debt to income], "0.0%" ) & " of gross pay. The step down in March 2023 is the car purchase." 
+			```
+
+	/// One-line reading of the FIRE page.
+	measure 'Insight: stop' = ```
+			VAR age = [FIRE age]
+			RETURN
+			    IF (
+			        ISBLANK ( age ),
+			        "Not reached within 30 years on these assumptions.",
+			        "On these assumptions, work becomes optional at " & age & ", in "
+			            & ( YEAR ( MAX ( 'FIRE Inputs'[as_of] ) ) + [Years to FIRE] ) & ". Move the sliders to test it."
+			    )
+			```
+
+	column Value
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition Metrics = calculated
+		mode: import
+		source = { 1 }

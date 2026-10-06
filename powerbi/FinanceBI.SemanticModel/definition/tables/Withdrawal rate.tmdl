@@ -1,0 +1,11 @@
+table 'Withdrawal rate'
+
+	column 'Withdrawal rate'
+		dataType: double
+		formatString: "0.00""%"""
+		summarizeBy: none
+		sourceColumn: [Withdrawal rate]
+
+	partition 'Withdrawal rate' = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 2.5, 5, 0.25 ), "Withdrawal rate", [Value] )

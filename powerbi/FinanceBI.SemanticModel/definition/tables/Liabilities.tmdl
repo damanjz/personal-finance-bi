@@ -1,0 +1,38 @@
+table Liabilities
+
+	column month
+		dataType: dateTime
+		formatString: Short Date
+		isHidden
+		summarizeBy: none
+		sourceColumn: month
+
+	column liability
+		dataType: string
+		summarizeBy: none
+		sourceColumn: liability
+
+	column outstanding
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: outstanding
+
+	partition Liabilities = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_liabilities.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"month", type date},
+						{"liability", type text},
+						{"outstanding", type number}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"

@@ -1,0 +1,54 @@
+table 'Category Spend'
+
+	column month
+		dataType: dateTime
+		formatString: Short Date
+		isHidden
+		summarizeBy: none
+		sourceColumn: month
+
+	column category
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: category
+
+	column category_group
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: category_group
+
+	column spend
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: spend
+
+	column txn_count
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: txn_count
+
+	partition 'Category Spend' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "mart_category_monthly.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"month", type date},
+						{"category", type text},
+						{"category_group", type text},
+						{"spend", type number},
+						{"txn_count", Int64.Type}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"

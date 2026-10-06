@@ -1,0 +1,52 @@
+table Cashflow
+
+	column month
+		dataType: dateTime
+		formatString: Short Date
+		isHidden
+		summarizeBy: none
+		sourceColumn: month
+
+	column stage
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: stage
+
+	column source
+		dataType: string
+		summarizeBy: none
+		sourceColumn: source
+
+	column target
+		dataType: string
+		summarizeBy: none
+		sourceColumn: target
+
+	column amount
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: amount
+
+	partition Cashflow = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "mart_cashflow_sankey.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"month", type date},
+						{"stage", Int64.Type},
+						{"source", type text},
+						{"target", type text},
+						{"amount", type number}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"

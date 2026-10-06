@@ -1,0 +1,36 @@
+table Category
+
+	column category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: category
+
+	column category_group
+		dataType: string
+		summarizeBy: none
+		sourceColumn: category_group
+
+	column sort_order
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: sort_order
+
+	partition Category = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_category.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"category", type text},
+						{"category_group", type text},
+						{"sort_order", Int64.Type}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"

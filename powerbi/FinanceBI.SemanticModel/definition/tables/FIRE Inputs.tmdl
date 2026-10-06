@@ -1,0 +1,56 @@
+table 'FIRE Inputs'
+
+	column as_of
+		dataType: dateTime
+		formatString: Short Date
+		isHidden
+		summarizeBy: none
+		sourceColumn: as_of
+
+	column current_age
+		dataType: int64
+		formatString: 0
+		isHidden
+		summarizeBy: none
+		sourceColumn: current_age
+
+	column investable_assets
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: investable_assets
+
+	column annual_spend
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: annual_spend
+
+	column annual_contribution
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: annual_contribution
+
+	partition 'FIRE Inputs' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "mart_fire_inputs.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"as_of", type date},
+						{"current_age", Int64.Type},
+						{"investable_assets", type number},
+						{"annual_spend", type number},
+						{"annual_contribution", type number}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"

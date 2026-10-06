@@ -1,0 +1,35 @@
+relationship 59df34d3-1f35-5028-8d2a-512dc17a6b61
+	fromColumn: Transactions.month
+	toColumn: Month.month
+
+relationship b1277329-c63b-509f-8815-4692a67c3e14
+	fromColumn: Monthly.month
+	toColumn: Month.month
+
+relationship 6c5a9e0d-d7f0-5757-be88-4c8c53496f70
+	fromColumn: 'Category Spend'.month
+	toColumn: Month.month
+
+relationship 4753df3d-cb76-5d9e-8afd-d0b8bce68575
+	fromColumn: Holdings.month
+	toColumn: Month.month
+
+relationship 051c2a61-ca77-5e09-8a7b-33c1d4c6fb05
+	fromColumn: Liabilities.month
+	toColumn: Month.month
+
+relationship 2d64b8a1-3382-59f2-b159-a60103d0515e
+	fromColumn: 'Net Worth'.month
+	toColumn: Month.month
+
+relationship a368fb54-f514-5b1a-a0ca-7a7d690309ac
+	fromColumn: Cashflow.month
+	toColumn: Month.month
+
+relationship 3ca21893-b378-5b3b-bb17-5218a2e6fc47
+	fromColumn: Transactions.category
+	toColumn: Category.category
+
+relationship c29afbaa-39df-5454-ba71-3b1e6e7c3e4e
+	fromColumn: 'Category Spend'.category
+	toColumn: Category.category

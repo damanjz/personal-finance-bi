@@ -1,0 +1,192 @@
+table Monthly
+
+	column month
+		dataType: dateTime
+		formatString: Short Date
+		isHidden
+		summarizeBy: none
+		sourceColumn: month
+
+	column gross
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: gross
+
+	column income_tax
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: income_tax
+
+	column epf_employee
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: epf_employee
+
+	column epf_employer
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: epf_employer
+
+	column professional_tax
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: professional_tax
+
+	column take_home
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: take_home
+
+	column bonus
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: bonus
+
+	column other_income
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: other_income
+
+	column income
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: income
+
+	column fixed_spend
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: fixed_spend
+
+	column discretionary_spend
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: discretionary_spend
+
+	column total_spend
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: total_spend
+
+	column invested
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: invested
+
+	column withdrawn
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: withdrawn
+
+	column cash_saved
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: cash_saved
+
+	column savings_rate
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: savings_rate
+
+	column emi
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: emi
+
+	column debt_to_income
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: debt_to_income
+
+	column net_worth
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: net_worth
+
+	column total_assets
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: total_assets
+
+	column total_liabilities
+		dataType: double
+		formatString: #,0.00
+		isHidden
+		summarizeBy: none
+		sourceColumn: total_liabilities
+
+	partition Monthly = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "mart_monthly.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"month", type date},
+						{"gross", type number},
+						{"income_tax", type number},
+						{"epf_employee", type number},
+						{"epf_employer", type number},
+						{"professional_tax", type number},
+						{"take_home", type number},
+						{"bonus", type number},
+						{"other_income", type number},
+						{"income", type number},
+						{"fixed_spend", type number},
+						{"discretionary_spend", type number},
+						{"total_spend", type number},
+						{"invested", type number},
+						{"withdrawn", type number},
+						{"cash_saved", type number},
+						{"savings_rate", type number},
+						{"emi", type number},
+						{"debt_to_income", type number},
+						{"net_worth", type number},
+						{"total_assets", type number},
+						{"total_liabilities", type number}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"

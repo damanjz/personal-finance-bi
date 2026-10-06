@@ -1,0 +1,71 @@
+table Transactions
+
+	column txn_id
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: txn_id
+
+	column source
+		dataType: string
+		summarizeBy: none
+		sourceColumn: source
+
+	column txn_date
+		dataType: dateTime
+		formatString: Short Date
+		summarizeBy: none
+		sourceColumn: txn_date
+
+	column month
+		dataType: dateTime
+		formatString: Short Date
+		isHidden
+		summarizeBy: none
+		sourceColumn: month
+
+	column description
+		dataType: string
+		summarizeBy: none
+		sourceColumn: description
+
+	column amount
+		dataType: double
+		formatString: #,0.00
+		summarizeBy: none
+		sourceColumn: amount
+
+	column category
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: category
+
+	column category_group
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: category_group
+
+	partition Transactions = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_transactions.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    #"Promoted headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    #"Typed columns" = Table.TransformColumnTypes(
+				        #"Promoted headers",
+				        {
+						{"txn_id", type text},
+						{"source", type text},
+						{"txn_date", type date},
+						{"month", type date},
+						{"description", type text},
+						{"amount", type number},
+						{"category", type text},
+						{"category_group", type text}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Typed columns"
