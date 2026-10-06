@@ -1,0 +1,216 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal Finance BI: case study</title>
+<style>
+  :root {
+    --paper: #fbfaf7; --rail: #f2efe7; --rule: #e3ded2;
+    --text: #1d2330; --muted: #5b6170;
+    --ink: #2f55b0; --ochre: #c27a1a; --teal: #1f8f7a; --rust: #c0533a;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono: "Cascadia Mono", Consolas, monospace;
+  }
+  @page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: var(--paper); color: var(--text); font: 10.5pt/1.55 var(--sans); }
+  main { max-width: 820px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; color: var(--text); margin: 0; }
+  h1 { font-size: 30pt; line-height: 1.1; letter-spacing: -0.01em; }
+  h2 { font-size: 18pt; margin: 40px 0 10px; padding-top: 14px; border-top: 1px solid var(--rule); }
+  h3 { font-size: 13pt; margin: 22px 0 6px; }
+  p { margin: 0 0 10px; }
+  .lede { font: 13pt/1.5 var(--serif); color: var(--muted); margin: 10px 0 12px; max-width: 640px; }
+  .byline { font-size: 9pt; color: var(--muted); letter-spacing: 0.02em; }
+  .muted { color: var(--muted); }
+  .eyebrow { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 8px; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 26px 0 6px; }
+  .tile { border-left: 2px solid var(--rule); padding: 2px 14px; }
+  .tile b { display: block; font: 22pt/1.1 var(--serif); font-weight: 400; }
+  .tile span { font-size: 9pt; color: var(--muted); }
+  figure { margin: 16px 0 18px; break-inside: avoid; }
+  figure img { width: 100%; display: block; border: 1px solid var(--rule); }
+  figcaption { font-size: 8.8pt; color: var(--muted); margin-top: 6px; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: 9.5pt; break-inside: avoid; }
+  th { text-align: left; font-weight: 600; color: var(--muted); font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--text); padding: 6px 8px 5px 0; }
+  td { border-bottom: 1px solid var(--rule); padding: 6px 8px 6px 0; vertical-align: top; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  code { font: 9pt var(--mono); background: var(--rail); padding: 1px 4px; }
+  ul { margin: 0 0 10px; padding-left: 18px; } li { margin: 3px 0; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .callout { background: var(--rail); border-left: 3px solid var(--ink); padding: 12px 16px; margin: 14px 0; break-inside: avoid; }
+  .callout p:last-child { margin: 0; }
+  .pipeline { width: 100%; height: auto; margin: 8px 0 4px; }
+  .pipeline text { font-family: var(--sans); }
+  .finding { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--rule); break-inside: avoid; }
+  .finding b { font: 20pt/1.1 var(--serif); font-weight: 400; color: var(--ink); }
+  .page-break { break-before: page; }
+  footer { margin-top: 40px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 8.5pt; color: var(--muted); }
+  @media (max-width: 640px) {
+    h1 { font-size: 24pt; } .tiles { grid-template-columns: 1fr 1fr; row-gap: 14px; }
+    .two { grid-template-columns: 1fr; } .finding { grid-template-columns: 1fr; gap: 4px; }
+  }
+  @media print { main { padding: 0; max-width: none; } h2 { margin-top: 28px; } }
+</style>
+</head>
+<body>
+<main>
+
+<div class="eyebrow">BI and data analysis case study</div>
+<h1>Personal finance, five years, four questions</h1>
+<p class="lede">An end-to-end analytics build: synthetic but realistic financial records, a tested SQL model in DuckDB, and a Power BI report that walks a reader through where money goes, what it built, whether it's on track, and when work becomes optional.</p>
+<p class="byline">Daman Reddy &middot; October 2026 &middot; Python, DuckDB, SQL, DAX, Power BI</p>
+
+<div class="tiles">
+  <div class="tile"><b>60</b><span>months of records</span></div>
+  <div class="tile"><b>2,818</b><span>transactions categorised</span></div>
+  <div class="tile"><b>15</b><span>reconciliation checks, all passing</span></div>
+  <div class="tile"><b>30</b><span>DAX measures, matched to SQL</span></div>
+</div>
+
+<h2>The problem</h2>
+<p>Personal finance data is scattered: a bank statement, a credit card statement, payslips, mutual fund confirmations, an EPF passbook, a loan schedule. Each answers a narrow question. None answers the ones that matter: <em>where does the money actually go, what has it built, am I improving, and when could I stop working?</em></p>
+<p>The brief was to bring those sources into one model and answer the four questions on a single, honest report: every number traceable to a source row, every total reconciled.</p>
+
+<div class="callout"><p><b>Why synthetic data.</b> Real statements can't be published. Instead of a toy dataset, I wrote a generator that produces the exports a real person would have, with the same messiness (UPI references, card bills that pay last month's spending, bonus months, a broken fixed deposit), so the pipeline has to do real work.</p></div>
+
+<h2>The persona and the data</h2>
+<p>A software engineer in Hyderabad, aged 26 to 31, from October 2021 to September 2026. The generator (<code>src/generate.py</code>, seeded, so it's reproducible) simulates the life month by month:</p>
+<div class="two">
+<ul>
+  <li><b>Pay:</b> payslips with basic, EPF and income tax approximated from India's new-regime slabs; annual hikes, a 35% job switch in July 2023, April bonuses.</li>
+  <li><b>Spending:</b> rent with a move and yearly increases, family support, groceries, delivery, travel, Diwali sales, subscriptions, insurance, ATM cash.</li>
+  <li><b>Debt:</b> an education loan ending in 2024 and a car loan from 2023, both on true amortisation schedules.</li>
+</ul>
+<ul>
+  <li><b>Saving:</b> index and debt fund SIPs, PPF, two fixed deposits, office REIT units with quarterly distributions, EPF with yearly interest.</li>
+  <li><b>Behaviour:</b> optional investments only happen from cash the month can spare, so the bank balance never goes negative (an early version did, and the fix became a rule).</li>
+  <li><b>Exports:</b> 10 raw files: bank and card statements, payslips, fund and REIT logs, prices, EPF and PPF passbooks, FD register, loan sanctions.</li>
+</ul>
+</div>
+<p class="muted">Market prices are simulated, not real index data. The tax is an approximation, not a calculator.</p>
+
+<h2>The pipeline</h2>
+<svg class="pipeline" viewBox="0 0 820 128" role="img" aria-label="Pipeline: generator to raw CSVs to DuckDB staging, model and marts, checked by 15 tests, exported to Power BI">
+  <defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#5b6170"/></marker></defs>
+  <g font-size="12" fill="#1d2330">
+    <rect x="0" y="34" width="118" height="56" fill="#f2efe7" stroke="#e3ded2"/><text x="59" y="58" text-anchor="middle">generate.py</text><text x="59" y="76" text-anchor="middle" fill="#5b6170" font-size="10.5">seeded persona</text>
+    <rect x="148" y="34" width="118" height="56" fill="#f2efe7" stroke="#e3ded2"/><text x="207" y="58" text-anchor="middle">10 raw CSVs</text><text x="207" y="76" text-anchor="middle" fill="#5b6170" font-size="10.5">bank, card, payslips…</text>
+    <rect x="296" y="8" width="248" height="108" fill="none" stroke="#2f55b0" stroke-dasharray="3 3"/><text x="420" y="24" text-anchor="middle" fill="#2f55b0" font-size="10.5">DuckDB, plain SQL</text>
+    <rect x="306" y="34" width="70" height="56" fill="#fbfaf7" stroke="#e3ded2"/><text x="341" y="66" text-anchor="middle">staging</text>
+    <rect x="385" y="34" width="70" height="56" fill="#fbfaf7" stroke="#e3ded2"/><text x="420" y="66" text-anchor="middle">model</text>
+    <rect x="464" y="34" width="70" height="56" fill="#fbfaf7" stroke="#e3ded2"/><text x="499" y="66" text-anchor="middle">marts</text>
+    <text x="420" y="108" text-anchor="middle" fill="#1f8f7a" font-size="10.5">15 checks gate the export</text>
+    <rect x="574" y="34" width="100" height="56" fill="#f2efe7" stroke="#e3ded2"/><text x="624" y="58" text-anchor="middle">13 tables</text><text x="624" y="76" text-anchor="middle" fill="#5b6170" font-size="10.5">CSV export</text>
+    <rect x="704" y="34" width="116" height="56" fill="#2f55b0"/><text x="762" y="58" text-anchor="middle" fill="#fff">Power BI</text><text x="762" y="76" text-anchor="middle" fill="#dfe6f7" font-size="10.5">TMDL + PBIR</text>
+  </g>
+  <g stroke="#5b6170" stroke-width="1.2" marker-end="url(#a)">
+    <line x1="118" y1="62" x2="146" y2="62"/><line x1="266" y1="62" x2="304" y2="62"/>
+    <line x1="376" y1="62" x2="383" y2="62"/><line x1="455" y1="62" x2="462" y2="62"/>
+    <line x1="544" y1="62" x2="572" y2="62"/><line x1="674" y1="62" x2="702" y2="62"/>
+  </g>
+</svg>
+<p>Three SQL files, each one layer: <b>staging</b> types the raw exports into one signed ledger; <b>model</b> builds a star schema around a month dimension; <b>marts</b> produce report-ready tables. <code>src/pipeline.py</code> runs them, runs the checks, and only then exports.</p>
+<ul>
+  <li><b>Categorisation as data, not code.</b> 30 priority-ordered regex rules in <code>config/category_rules.csv</code> sort 2,818 transactions into 28 categories in five groups (income, fixed, discretionary, investments, and transfers that net out). An analyst can change a rule without touching SQL.</li>
+  <li><b>Loan schedules in SQL.</b> A recursive CTE builds full amortisation tables; month-end outstanding balances come from them, not from a hard-coded number.</li>
+  <li><b>Accrual, not cash timing.</b> Card spending counts in the month it happened, not when the bill is paid; the unpaid card balance becomes a liability. That's what makes the cashflow identity hold.</li>
+</ul>
+
+<figure>
+  <img src="img/model.png" alt="Power BI model view: Month dimension at the centre, related to Transactions, Monthly, Category Spend, Holdings, Liabilities, Net Worth and Cashflow; Category related to transactions and category spend.">
+  <figcaption>The semantic model in Power BI: one month dimension, one category dimension, seven fact and mart tables, measures kept in their own table, raw columns hidden.</figcaption>
+</figure>
+
+<h2 class="page-break">Proving it</h2>
+<p>A dashboard is only as good as the trust in its numbers. The pipeline refuses to export unless every check returns zero failing rows.</p>
+<table>
+  <tr><th>Check</th><th>What it guarantees</th></tr>
+  <tr><td>Bank balance chains line by line</td><td>No transaction was dropped or duplicated.</td></tr>
+  <tr><td>Salary credit equals payslip net pay</td><td>Payroll and bank agree every month.</td></tr>
+  <tr><td>EMI debits match the amortisation schedule</td><td>The loan model and the bank tell the same story.</td></tr>
+  <tr><td>Card bill equals last month's net charges</td><td>Card spend isn't double-counted through the bill payment.</td></tr>
+  <tr><td>Cash saved equals change in bank minus change in card debt</td><td>The headline accounting identity holds every month.</td></tr>
+  <tr><td>Sankey flows balance at every node</td><td>The cashflow chart can't show money appearing or vanishing.</td></tr>
+  <tr><td>Every transaction has a category</td><td>Nothing hides in "uncategorised".</td></tr>
+</table>
+<p class="muted">Plus eight more: fund purchases match their log, gross pay splits fully into deductions, no negative balances or holdings, loans fully repaid, and the FIRE projection starts at today's assets.</p>
+<p><b>Testing the tests.</b> A check that can't fail is worthless, so I broke the data on purpose in six ways (an edited balance, a short EMI, an uncategorised line, an unbalanced flow, a wrong cash figure, a mismatched card bill). Each one was caught.</p>
+<p><b>Report matches source.</b> The final check queried the running Power BI model directly and compared it with DuckDB:</p>
+<table>
+  <tr><th>Measure</th><th class="num">Power BI</th><th class="num">DuckDB</th></tr>
+  <tr><td>Average money in per month</td><td class="num">₹1.541836 L</td><td class="num">₹1.541836 L</td></tr>
+  <tr><td>Savings rate, 60 months</td><td class="num">33.222%</td><td class="num">33.222%</td></tr>
+  <tr><td>Debt to income</td><td class="num">9.645%</td><td class="num">9.645%</td></tr>
+  <tr><td>Net worth, Sep 2026</td><td class="num">₹44.0229 L</td><td class="num">₹44.0229 L</td></tr>
+  <tr><td>FIRE age and corpus</td><td class="num">46, ₹7.8155 Cr</td><td class="num">46, ₹7.8155 Cr</td></tr>
+</table>
+
+<h2 class="page-break">The report</h2>
+<p>The structure is a guided story, not a wall of charts. A left rail holds four questions; each page answers one, with a plain-English line that updates with the filters, four headline numbers, one hero visual and one supporting visual.</p>
+
+<h3>1. Where does it go?</h3>
+<figure>
+  <img src="img/01-where.png" alt="Report page 'Where does it go?': Sankey from gross pay to tax, provident fund and take-home pay, then to fixed costs, discretionary, investments and cash saved; bar chart of average monthly spend by category led by rent and loan EMIs.">
+  <figcaption>The Sankey traces gross pay through tax and EPF to every destination. Category detail lives in the bar chart, not the Sankey, so neither repeats the other.</figcaption>
+</figure>
+
+<h3>2. What do I own?</h3>
+<figure>
+  <img src="img/02-own.png" alt="Report page 'What do I own?': stacked area of assets by class growing from about 4 lakh to 46.5 lakh; allocation bars with equity 41.5%, fixed income 39.2%, cash reserves 16.6%, real estate 2.7%.">
+  <figcaption>Assets by class over time, and the allocation at the end of whatever period is selected.</figcaption>
+</figure>
+
+<h3>3. Am I on track?</h3>
+<figure>
+  <img src="img/03-track.png" alt="Report page 'Am I on track?': trailing 12-month savings rate rising from about 10% to 45%; debt to income peaking near 19% in 2023 and falling to under 6%.">
+  <figcaption>Savings rate is shown as a trailing 12-month line; the monthly series swung to −140% in the car-purchase month and flattened everything else.</figcaption>
+</figure>
+
+<h3>4. When can I stop?</h3>
+<figure>
+  <img src="img/04-stop.png" alt="Report page 'When can I stop?': projected portfolio crossing the FIRE target at age 46, with sliders for expected return, inflation and safe withdrawal rate.">
+  <figcaption>Live what-if sliders recompute the projection, the target and the crossover age in DAX.</figcaption>
+</figure>
+
+<h2 class="page-break">What the data says</h2>
+<div class="finding"><b>13% &rarr; 41%</b><div>Savings rate by financial year rose from 13.4% (FY 2021-22) to 40.9% (FY 2025-26). Income growth did most of it: the job switch lifted monthly money in from ₹1.10 L to ₹1.45 L while spending grew more slowly.</div></div>
+<div class="finding"><b>&minus;₹0.5 L</b><div>Net worth went negative once, in March 2023: a ₹1.5 L car down payment funded by breaking a fixed deposit, plus a ₹6.5 L car loan. It was back to ₹4.8 L within six months.</div></div>
+<div class="finding"><b>36.6%</b><div>Rent (19.9%) and loan EMIs (16.7%) take over a third of all spending. With the education loan closed in 2024, debt payments fell from 15.4% of gross pay to 5.7%.</div></div>
+<div class="finding"><b>₹7.7 L idle</b><div>17% of assets sits in the savings account and FDs, 7.5 months of spending. Common guidance is 3 to 6 months, so roughly ₹1.5 to 4.5 L could be invested without weakening the buffer.</div></div>
+<div class="finding"><b>Age 46</b><div>At 10% returns, 6% inflation and a 3.5% withdrawal rate, the portfolio covers spending at 46 (2041). The answer is sensitive to assumptions:</div></div>
+<table>
+  <tr><th>Change one assumption</th><th class="num">FIRE age</th></tr>
+  <tr><td>Base case: 10% return, 6% inflation, 3.5% withdrawal</td><td class="num">46</td></tr>
+  <tr><td>Return 8% / 12%</td><td class="num">48 / 44</td></tr>
+  <tr><td>Inflation 7%</td><td class="num">48</td></tr>
+  <tr><td>Withdrawal rate 3% / 4%</td><td class="num">48 / 44</td></tr>
+</table>
+<p class="muted">FY 2026-27 covers only April to September, so its 55% savings rate includes a bonus month and isn't comparable to full years.</p>
+
+<h2>Design decisions</h2>
+<ul>
+  <li><b>Questions as navigation.</b> The four questions are the page names and the rail, so the report reads in order and each page has one job.</li>
+  <li><b>Indian units.</b> Lakh and crore throughout; FIRE maths uses Indian inflation, not a borrowed US 4% rule.</li>
+  <li><b>Colour encodes meaning.</b> Blue for income and equity, teal for money kept, ochre for discretionary, rust for fixed costs. The palette passed a colour-blindness and contrast validator before use.</li>
+  <li><b>Honest charts.</b> Axes start at zero; the noisy monthly series became a trailing 12-month line; sliders open on the values the maths uses.</li>
+</ul>
+
+<h2>Built as code</h2>
+<p>The Power BI project isn't hand-built: <code>powerbi/build_pbip.py</code> generates the semantic model (TMDL) and every report page (PBIR) from the DuckDB schema, so the report can be regenerated, reviewed in a diff, and versioned. Before Power BI opens it, <code>validate_tmdl.ps1</code> parses the model with Power BI's own serializer. Rebuilding everything takes three commands:</p>
+<p><code>python src/generate.py</code> &nbsp; <code>python src/pipeline.py</code> &nbsp; <code>python powerbi/build_pbip.py</code></p>
+
+<h2>Limits and next steps</h2>
+<ul>
+  <li>Synthetic data: the shape is realistic, but market returns are simulated and tax is approximated.</li>
+  <li>FIRE projection is deterministic; a Monte Carlo range would show sequence-of-returns risk.</li>
+  <li>Next: a budget-versus-actual page, a real-statement import path (CSV mapping per bank), and scheduled refresh.</li>
+</ul>
+
+<footer>Personal Finance BI &middot; synthetic persona, no real personal data &middot; built with Python, DuckDB, SQL, DAX and Power BI.</footer>
+</main>
+</body>
+</html>

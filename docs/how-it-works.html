@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal Finance BI: how it works</title>
+<style>
+  :root {
+    --paper: #fbfaf7; --rail: #f2efe7; --rule: #e3ded2;
+    --text: #1d2330; --muted: #5b6170; --ink: #2f55b0; --teal: #1f8f7a;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: "Segoe UI", system-ui, -apple-system, sans-serif;
+    --mono: "Cascadia Mono", Consolas, monospace;
+  }
+  @page { size: A4; margin: 15mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; background: var(--paper); color: var(--text); font: 10pt/1.55 var(--sans); }
+  main { max-width: 820px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; margin: 0; }
+  h1 { font-size: 26pt; line-height: 1.15; }
+  h2 { font-size: 16pt; margin: 32px 0 8px; padding-top: 12px; border-top: 1px solid var(--rule); }
+  h3 { font-size: 12pt; margin: 18px 0 4px; }
+  p { margin: 0 0 9px; }
+  .lede { font: 12pt/1.5 var(--serif); color: var(--muted); margin: 8px 0 10px; }
+  .eyebrow { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); margin-bottom: 8px; }
+  .muted { color: var(--muted); }
+  code { font: 8.8pt var(--mono); background: var(--rail); padding: 1px 4px; }
+  pre { font: 8.6pt/1.5 var(--mono); background: var(--rail); padding: 10px 12px; margin: 8px 0 12px; white-space: pre-wrap; break-inside: avoid; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 9.2pt; break-inside: avoid; }
+  th { text-align: left; font-weight: 600; color: var(--muted); font-size: 8.3pt; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--text); padding: 5px 8px 4px 0; }
+  td { border-bottom: 1px solid var(--rule); padding: 5px 8px 5px 0; vertical-align: top; }
+  td:first-child { white-space: nowrap; }
+  ul, ol { margin: 0 0 9px; padding-left: 18px; } li { margin: 3px 0; }
+  .callout { background: var(--rail); border-left: 3px solid var(--ink); padding: 10px 14px; margin: 12px 0; break-inside: avoid; }
+  .callout p:last-child { margin: 0; }
+  .page-break { break-before: page; }
+  @media print { main { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { h1 { font-size: 21pt; } td:first-child { white-space: normal; } }
+</style>
+</head>
+<body>
+<main>
+
+<div class="eyebrow">Peer review guide</div>
+<h1>How it works</h1>
+<p class="lede">A walkthrough of the project for reviewers: what each part does, how data moves from raw exports to the report, how correctness is enforced, and where your eyes are most useful.</p>
+<p class="muted">Companion to the case study. Paths are relative to the project folder.</p>
+
+<h2>1. The flow in one picture</h2>
+<pre>src/generate.py ──► data/raw/*.csv (10 exports)
+                         │
+src/pipeline.py ─────────┤  runs, in order:
+                         ├─ sql/01_staging.sql   type the raw files, one signed ledger
+                         ├─ sql/02_model.sql     dimensions, facts, loan schedules, balances
+                         ├─ sql/03_marts.sql     monthly KPIs, net worth, Sankey flows, FIRE
+                         ├─ sql/checks.sql       15 checks; any failure stops the build
+                         └─ export ──► data/model/*.csv (13 tables)
+                                              │
+powerbi/build_pbip.py ────────────────────────┴─► powerbi/FinanceBI.pbip
+                                                   ├─ SemanticModel  (TMDL)
+                                                   └─ Report         (PBIR, JSON)</pre>
+<p>Everything downstream of <code>generate.py</code> is deterministic. Same seed, same data, same numbers, same report.</p>
+
+<h2>2. Running it</h2>
+<pre>python -m venv .venv
+.venv\Scripts\pip install -r requirements.txt
+.venv\Scripts\python src\generate.py        # writes data/raw
+.venv\Scripts\python src\pipeline.py        # builds data/finance.duckdb, runs checks, writes data/model
+.venv\Scripts\python powerbi\build_pbip.py  # writes the Power BI project for your machine's paths</pre>
+<p>Open <code>powerbi\FinanceBI.pbip</code> in Power BI Desktop and select <b>Refresh</b>. Run <code>build_pbip.py</code> first unless the project sits at <code>C:\personal-finance-bi</code>: it writes your local <code>data\model</code> path into the model's <code>DataFolder</code> parameter. The Sankey is Microsoft's free AppSource visual, loaded on first open.</p>
+<p class="muted">Expected <code>pipeline.py</code> output: three "built" lines, 15 lines starting with <code>pass</code>, then "exported 13 tables".</p>
+
+<h2>3. Stage by stage</h2>
+
+<h3>3.1 Generator: <code>src/generate.py</code></h3>
+<p>Simulates one person month by month and writes what they could export from their bank, employer and investment platforms.</p>
+<table>
+  <tr><th>Mechanism</th><th>How it works</th></tr>
+  <tr><td>Reproducibility</td><td>One seeded random generator (<code>SEED = 7</code>). Every amount, date and price comes from it.</td></tr>
+  <tr><td>Pay</td><td>CTC grows each April and jumps 35% at a July 2023 job switch. Gross, basic, EPF and TDS are derived per month; tax uses new-regime slabs by financial year (an approximation).</td></tr>
+  <tr><td>Spending</td><td>Fixed items on fixed days; discretionary totals are split across a random number of transactions with realistic merchant strings (UPI, POS, NACH, ATM). Inflation of 6% a year; Diwali and sale months spike.</td></tr>
+  <tr><td>Card</td><td>Card spend lands on the card statement and is paid from the bank on the 3rd of the next month, so card and bank must be reconciled, not added.</td></tr>
+  <tr><td>Loans</td><td>EMIs use the standard amortisation formula. The education loan predates the window, so only its tail appears.</td></tr>
+  <tr><td>Liquidity rule</td><td>SIPs always run. Optional moves (lump sums, PPF, FDs, REIT buys) only happen if the account stays above a ₹25k floor. Twice a year, cash above 1.5 months of committed spend is invested.</td></tr>
+  <tr><td>Self-check</td><td>The script refuses to write files if the bank balance ever goes negative.</td></tr>
+</table>
+
+<h3>3.2 Staging: <code>sql/01_staging.sql</code></h3>
+<p>Reads each CSV with explicit types. The key output is <code>stg_transactions</code>: bank and card lines in one table with one sign convention (money in positive, money out negative). No business logic lives here.</p>
+
+<h3>3.3 Model: <code>sql/02_model.sql</code></h3>
+<table>
+  <tr><th>Table</th><th>Built how</th></tr>
+  <tr><td><code>fact_transactions</code></td><td>Every ledger line joined to <code>config/category_rules.csv</code> by regex; the lowest priority number wins. Unmatched lines would be "Uncategorized" (a check forbids any).</td></tr>
+  <tr><td><code>fact_loan_schedule</code></td><td>Recursive CTE: installment <i>k+1</i> opens at installment <i>k</i>'s closing balance. The last installment clears the remainder exactly.</td></tr>
+  <tr><td><code>fact_holdings</code></td><td>Month-end value per instrument: cumulative fund and REIT units × that month's price; EPF and PPF from passbooks; FDs compound quarterly until closed; cash is the last bank balance in the month.</td></tr>
+  <tr><td><code>fact_liabilities</code></td><td>Loan outstanding from the schedule (full principal between disbursal and first EMI), plus the unpaid card balance.</td></tr>
+  <tr><td><code>dim_month</code>, <code>dim_category</code></td><td>The two dimensions every fact relates to. Months carry the Indian financial year label (April to March).</td></tr>
+</table>
+
+<h3>3.4 Marts: <code>sql/03_marts.sql</code></h3>
+<table>
+  <tr><th>Mart</th><th>Definition</th></tr>
+  <tr><td><code>mart_monthly</code></td><td><b>Income</b> = take-home + bonus + REIT distributions + cashback. <b>Spend</b> = fixed + discretionary (accrual: card spend counts when it happens). <b>Cash saved</b> = income − spend − net investment. <b>Savings rate</b> = (income − spend) / income. <b>Debt to income</b> = EMIs / gross pay.</td></tr>
+  <tr><td><code>mart_net_worth</code></td><td>Assets by class (cash reserves, equity, fixed income, real estate) minus loans and card balance.</td></tr>
+  <tr><td><code>mart_cashflow_sankey</code></td><td>Source → target → amount rows in four stages: gross pay split; money in from all sources; split into fixed, discretionary, investments, cash; category detail. A month that drew down cash adds a "Cash drawn down" source so every node balances.</td></tr>
+  <tr><td><code>mart_fire_*</code></td><td>Inputs from the last 12 months (spend excluding EMIs and the car purchase, total contributions including EPF) and a 0–40 year baseline projection used to check the DAX.</td></tr>
+</table>
+
+<h3 class="page-break">3.5 Checks: <code>sql/checks.sql</code></h3>
+<p>Each check is a query that returns the rows breaking a rule. <code>pipeline.py</code> runs them all, prints pass or fail, and exits with an error if any fail. The six most important:</p>
+<table>
+  <tr><th>Check</th><th>Logic</th></tr>
+  <tr><td>Balance chain</td><td>Each bank line's balance = previous balance + credit − debit.</td></tr>
+  <tr><td>Payroll</td><td>Salary credit in the bank = payslip net pay, every month.</td></tr>
+  <tr><td>Loans</td><td>Each month's EMI debit per loan = the schedule's EMI.</td></tr>
+  <tr><td>Card</td><td>Bill paid in month <i>m</i> = net card charges in month <i>m</i>−1.</td></tr>
+  <tr><td>Cash identity</td><td>Cash saved = change in bank balance − change in card balance. This ties the accrual view to the actual accounts.</td></tr>
+  <tr><td>Sankey balance</td><td>Into "Money in" = out of "Money in"; every parent node = sum of its children.</td></tr>
+</table>
+<p>The checks were themselves tested: six deliberate corruptions inside a rolled-back transaction, each caught.</p>
+
+<h3>3.6 Power BI generation: <code>powerbi/build_pbip.py</code></h3>
+<ul>
+  <li><b>Model (TMDL).</b> Column types are read from the DuckDB schema, so the model can't drift from the data. Each table is a Power Query import from <code>DataFolder</code>. Calculated tables hold measures and what-if parameters (return, inflation, withdrawal rate, FIRE years).</li>
+  <li><b>Measures.</b> 30 DAX measures with format strings in lakh and crore. "Last month in context" measures (net worth, holdings) use the latest selected month so they work on cards and time axes alike. The FIRE projection uses the closed-form future value of a growing contribution stream, so no iteration is needed.</li>
+  <li><b>Report (PBIR).</b> Every page and visual is a JSON file. A shared rail (title, page navigator, synced period slicer) is stamped onto each page; theme colours, Sankey node colours and slider defaults are set explicitly.</li>
+</ul>
+
+<h3>3.7 Helper scripts: <code>powerbi/*.ps1</code></h3>
+<table>
+  <tr><th>Script</th><th>Purpose</th></tr>
+  <tr><td><code>validate_tmdl.ps1</code></td><td>Parses the model with Power BI Desktop's own TMDL serializer, offline. Catches format errors before Desktop does.</td></tr>
+  <tr><td><code>query_desktop.ps1</code></td><td>Runs a DAX query against the model open in Desktop (its local Analysis Services port). Used to match every KPI to DuckDB.</td></tr>
+  <tr><td><code>reload.ps1</code></td><td>Close Desktop, rebuild, reopen on a chosen page, trigger a data refresh, capture the window.</td></tr>
+  <tr><td><code>capture_*.ps1</code></td><td>Screenshot the Desktop window, or crop to the report canvas by detecting the rail colour.</td></tr>
+</table>
+
+<h2 class="page-break">4. Design choices worth challenging</h2>
+<table>
+  <tr><th>Choice</th><th>Why</th><th>Trade-off</th></tr>
+  <tr><td>Synthetic data</td><td>Publishable, reproducible, still messy enough to need real cleaning.</td><td>Patterns are designed, not discovered.</td></tr>
+  <tr><td>Accrual spend</td><td>Card spend belongs to the month it happened.</td><td>Monthly "cash saved" differs from the bank balance change by the card float (the cash identity check makes this explicit).</td></tr>
+  <tr><td>EMIs in fixed spend</td><td>Conservative; matches how people budget.</td><td>Principal repayment is really saving, so the savings rate is understated in loan years.</td></tr>
+  <tr><td>CSV hand-off to Power BI</td><td>No ODBC driver or extra install; portable.</td><td>Types are re-declared in Power Query (generated from the DuckDB schema to stay in sync).</td></tr>
+  <tr><td>Generated PBIP</td><td>Reviewable diffs, reproducible report.</td><td>Formatting properties for some visuals are under-documented; a few were found in Power BI's own client code.</td></tr>
+  <tr><td>Deterministic FIRE</td><td>Simple to explain and verify.</td><td>No sequence-of-returns risk; a Monte Carlo band is the obvious next step.</td></tr>
+</table>
+
+<h2>5. What to review</h2>
+<ol>
+  <li><b>Correctness.</b> Do the mart definitions in section 3.4 match how you'd define savings rate, debt to income and net worth? Is anything double counted?</li>
+  <li><b>Checks.</b> Is there a failure mode the 15 checks would miss?</li>
+  <li><b>Model.</b> Is the star schema sensible for Power BI (relationships, hidden columns, measure table)?</li>
+  <li><b>DAX.</b> Are the "last month in context" and FIRE measures clear and efficient?</li>
+  <li><b>Report.</b> Does each page answer its question within a few seconds? Is anything misleading, redundant or hard to read?</li>
+  <li><b>Story.</b> Are the case study's findings supported by the report?</li>
+</ol>
+
+<h2>6. Known limits</h2>
+<ul>
+  <li>Prices are simulated and tax is approximate; both are labelled.</li>
+  <li><code>DataFolder</code> is an absolute path (committed as <code>C:\personal-finance-bi\data\model\</code>); rebuild or edit it elsewhere.</li>
+  <li>The report is built for Power BI Desktop; publishing to the Power BI service needs a work account.</li>
+  <li>FY 2026-27 is a half year (April to September) and shouldn't be compared with full years.</li>
+</ul>
+
+</main>
+</body>
+</html>
