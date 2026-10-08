@@ -10,7 +10,10 @@ public class Cap {
   [DllImport("user32.dll")] public static extern bool PrintWindow(IntPtr h, IntPtr dc, uint flags);
 }
 "@
-$h = (Get-Process PBIDesktop | Where-Object MainWindowTitle | Select-Object -First 1).MainWindowHandle
+$pidFile = "$PSScriptRoot\..\.captures\pbi-pid.txt"   # the window reload.ps1 opened; never someone else's
+$own = if (Test-Path $pidFile) { Get-Process -Id ([int](Get-Content $pidFile)) -ErrorAction SilentlyContinue }
+if (-not $own) { "no Power BI window opened by reload.ps1"; exit 1 }
+$h = $own.MainWindowHandle
 $r = New-Object Cap+RECT; [Cap]::GetWindowRect($h, [ref]$r) | Out-Null
 $w = $r.R - $r.L; $ht = $r.B - $r.T
 $bmp = New-Object System.Drawing.Bitmap $w, $ht

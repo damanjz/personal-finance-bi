@@ -2,9 +2,9 @@
 param([Parameter(Mandatory)][string]$Dax)
 $bin = "C:\Program Files\Microsoft Power BI Desktop\bin"
 Add-Type -Path "$bin\Microsoft.PowerBI.AdomdClient.dll"
-$ws = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\Power BI Desktop\AnalysisServicesWorkspaces" -Recurse -Filter msmdsrv.port.txt |
-    Sort-Object LastWriteTime -Descending | Select-Object -First 1
-$port = (Get-Content $ws.FullName -Encoding Unicode).Trim()
+$portFile = "$PSScriptRoot\..\.captures\pbi-port.txt"   # written by reload.ps1 for the window it opened
+if (-not (Test-Path $portFile)) { "no Power BI window opened by reload.ps1; run it first"; exit 1 }
+$port = (Get-Content $portFile).Trim()
 $conn = New-Object Microsoft.AnalysisServices.AdomdClient.AdomdConnection "Data Source=localhost:$port"
 $conn.Open()
 $cmd = $conn.CreateCommand(); $cmd.CommandText = $Dax
